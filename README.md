@@ -1,8 +1,8 @@
 # SOC-Log-Analysis
-# project title
-# short intro
-# tools used
-# dataset/log source
-# objective
-# short summary of findings
-# folder structure
+# Project Title
+# Short Intro
+# Tools Used
+# Dataset/log source
+# Objective
+# Summary of Findings
+# Folder Structure
