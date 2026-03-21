@@ -1,13 +1,25 @@
 # Project Title
 
-# Intro
+---
 
-# Tools used
+## Intro
 
-# Dataset/log Source
+---
 
-# Objective
+## Tools used
 
-# Summary of Findings
+---
 
-# Folder Structure
+## Dataset/log Source
+
+---
+
+## Objective
+
+---
+
+## Summary of Findings
+
+---
+
+## Folder Structure
