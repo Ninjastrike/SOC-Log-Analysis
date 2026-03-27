@@ -280,6 +280,73 @@ This improves visibility and supports faster incident response.
 
 ---
 
+## 🚨 Indicators of Compromise (IOCs)
+
+The following indicators were identified during the analysis:
+
+### 🔹 Suspicious Source IPs
+
+* **192.168.202.141**
+
+  * Generated ~2365 failed login attempts
+  * Primary source of brute-force activity
+
+* Additional attacking IPs observed with lower volumes
+
+---
+
+### 🔹 Targeted Destination Systems
+
+* **192.168.229.101**
+
+  * Most frequently targeted host
+  * Indicates focused attack rather than random scanning
+
+---
+
+### 🔹 Behavioural Indicators
+
+* High volume of repeated authentication failures
+* Rapid consecutive login attempts within short time intervals
+* No successful authentication events observed
+
+These patterns are consistent with brute-force attack techniques.
+
+---
+
+### 🔹 Tool / Signature Indicators
+
+Detected SSH client signatures associated with automated tools:
+
+* `SSH-2.0-Nmap-SSH2-Hostkey`
+* `SSH-1.5-NmapNSE_1.0`
+
+These signatures indicate:
+
+* Automated reconnaissance activity
+* Use of scanning tools rather than legitimate user access
+
+---
+
+### 🔹 Temporal Indicators
+
+* Multiple failed attempts clustered within short time windows (≤5 minutes)
+* Behaviour triggered alert thresholds for brute-force detection
+
+---
+
+### 🔹 Summary
+
+The combination of:
+
+* High-frequency failed logins
+* Automated tool signatures
+* Focused targeting of specific systems
+
+strongly indicates **automated brute-force and reconnaissance activity** rather than normal user behaviour.
+
+---
+
 ## 🧩 Skills Demonstrated
 
 * Log ingestion and parsing
