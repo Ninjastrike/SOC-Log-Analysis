@@ -152,6 +152,125 @@ Triggers when:
 
 ---
 
+## 📸 Analysis Walkthrough
+
+This section demonstrates how the investigation was conducted step-by-step, simulating a real SOC analyst workflow from detection to validation.
+
+---
+
+### 1. Field Extraction
+
+![Field Extraction](screenshots/1-field-extraction.png)
+
+Raw SSH logs were parsed using regex to extract structured fields such as `src_ip`, `dest_ip`, and `status`.
+
+This step is essential as it converts unstructured log data into searchable and analysable fields within Splunk.
+
+---
+
+### 2. Identifying Top Attacking Source IPs
+
+![Top Attacking IPs](screenshots/2-top-attacker.png)
+
+Analysis of failed authentication attempts revealed that **192.168.202.141** generated the highest number of failures (~2365 attempts).
+
+This behaviour is highly indicative of a brute-force attack attempting to gain unauthorised access.
+
+---
+
+### 3. Investigating Suspicious Source IP
+
+![Investigate IP](screenshots/3-investigate-ip.png)
+
+Further investigation of the identified IP shows repeated login attempts across multiple timestamps and target systems.
+
+No successful authentication events were observed, suggesting persistent but unsuccessful brute-force activity.
+
+---
+
+### 4. Authentication Outcome Analysis
+
+![Failure vs Success](screenshots/4-failure-vs-success.png)
+
+The breakdown of authentication outcomes shows:
+
+* A very high number of failures
+* Minimal or no successful logins
+
+This pattern strongly reinforces the presence of brute-force behaviour.
+
+---
+
+### 5. Target System Analysis
+
+![Target Systems](screenshots/5-target-systems.png)
+
+The analysis indicates that the attacker primarily targeted:
+
+* **192.168.229.101**
+
+This suggests a focused attack rather than random scanning across multiple systems.
+
+---
+
+### 6. Detection of Automated Scanning (Nmap)
+
+![Nmap Detection](screenshots/6-nmap-detection.png)
+
+The presence of signatures such as:
+
+* `SSH-2.0-Nmap-SSH2-Hostkey`
+* `SSH-1.5-NmapNSE_1.0`
+
+indicates that automated tools were used.
+
+This confirms that the activity is not manual but part of scripted reconnaissance or scanning.
+
+---
+
+### 7. Brute Force Detection Query
+
+![Alert Query](screenshots/7-alert-query.png)
+
+A detection query was created to identify brute-force behaviour by:
+
+* Grouping events into 5-minute intervals
+* Counting failed login attempts per source IP
+* Flagging IPs exceeding a defined threshold (≥20 attempts)
+
+This mirrors real-world SOC detection logic.
+
+---
+
+### 8. Alert Configuration
+
+![Alert Configuration](screenshots/8-alert-config.png)
+
+An alert was configured with the following parameters:
+
+* Schedule: Every 5 minutes
+* Time range: Last 5 minutes
+* Trigger condition: Results > 0
+* Severity: Medium
+
+This enables automated detection of suspicious behaviour.
+
+---
+
+### 9. Dashboard Visualisation
+
+![Dashboard](screenshots/9-dashboard.png)
+
+A dashboard was created to provide a centralised view of:
+
+* Top attacking source IPs
+* Authentication outcomes
+* Indicators of automated scanning
+
+This improves visibility and supports faster incident response.
+
+---
+
 ## 🧠 Key Findings
 
 * A single source IP generated a significantly high number of failed login attempts
