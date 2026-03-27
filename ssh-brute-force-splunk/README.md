@@ -161,7 +161,7 @@ The presence of signatures such as:
 * `SSH-2.0-Nmap-SSH2-Hostkey`
 * `SSH-1.5-NmapNSE_1.0`
 
-confirms the use of automated tools for reconnaissance.
+This strongly suggests the activity is automated and likely part of reconnaissance or attack preparation.
 
 ---
 
@@ -217,11 +217,11 @@ This improves monitoring and incident response efficiency.
 
 ---
 
-## 🚨 Indicators of Compromise (IOCs)
+## 🚩 Indicators of Compromise (IOCs)
 
 The following indicators were identified during log analysis and can be used for detection and threat hunting.
 
-### 🔹 Suspicious Source IPs
+### 🔺 Suspicious Source IPs
 
 * **192.168.202.141**
 
@@ -230,7 +230,7 @@ The following indicators were identified during log analysis and can be used for
 
 ---
 
-### 🔹 Targeted Systems
+### 🔺 Targeted Systems
 
 * **192.168.229.101**
 
@@ -238,7 +238,7 @@ The following indicators were identified during log analysis and can be used for
 
 ---
 
-### 🔹 Behavioural Indicators
+### 🔺 Behavioural Indicators
 
 * High frequency of failed login attempts
 * Rapid repeated attempts within short time intervals
@@ -246,7 +246,7 @@ The following indicators were identified during log analysis and can be used for
 
 ---
 
-### 🔹 Tool Indicators
+### 🔺 Tool Indicators
 
 * `SSH-2.0-Nmap-SSH2-Hostkey`
 * `SSH-1.5-NmapNSE_1.0`
@@ -255,7 +255,7 @@ Indicates automated reconnaissance using Nmap.
 
 ---
 
-### 🔹 Temporal Indicators
+### 🔺 Temporal Indicators
 
 * Multiple failed attempts within 5-minute windows
 * Triggered brute-force alert threshold
