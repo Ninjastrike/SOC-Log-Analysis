@@ -170,7 +170,7 @@ This step is essential as it converts unstructured log data into searchable and 
 
 ### 2. Identifying Top Attacking Source IPs
 
-![Top Attacking IPs](screenshots/2-top-attacker.png)
+![Top Attacking IPs](screenshots/2-top-attacker.PNG)
 
 Analysis of failed authentication attempts revealed that **192.168.202.141** generated the highest number of failures (~2365 attempts).
 
@@ -180,7 +180,7 @@ This behaviour is highly indicative of a brute-force attack attempting to gain u
 
 ### 3. Investigating Suspicious Source IP
 
-![Investigate IP](screenshots/3-investigate-ip.png)
+![Investigate IP](screenshots/3-investigate-ip.PNG)
 
 Further investigation of the identified IP shows repeated login attempts across multiple timestamps and target systems.
 
@@ -190,7 +190,7 @@ No successful authentication events were observed, suggesting persistent but uns
 
 ### 4. Authentication Outcome Analysis
 
-![Failure vs Success](screenshots/4-failure-vs-success.png)
+![Failure vs Success](screenshots/4-failure-vs-success.PNG)
 
 The breakdown of authentication outcomes shows:
 
@@ -203,7 +203,7 @@ This pattern strongly reinforces the presence of brute-force behaviour.
 
 ### 5. Target System Analysis
 
-![Target Systems](screenshots/5-target-systems.png)
+![Target Systems](screenshots/5-target-systems.PNG)
 
 The analysis indicates that the attacker primarily targeted:
 
@@ -215,7 +215,7 @@ This suggests a focused attack rather than random scanning across multiple syste
 
 ### 6. Detection of Automated Scanning (Nmap)
 
-![Nmap Detection](screenshots/6-nmap-detection.png)
+![Nmap Detection](screenshots/6-nmap-detection.PNG)
 
 The presence of signatures such as:
 
@@ -230,7 +230,7 @@ This confirms that the activity is not manual but part of scripted reconnaissanc
 
 ### 7. Brute Force Detection Query
 
-![Alert Query](screenshots/7-alert-query.png)
+![Alert Query](screenshots/7-alert-query.PNG)
 
 A detection query was created to identify brute-force behaviour by:
 
@@ -244,7 +244,7 @@ This mirrors real-world SOC detection logic.
 
 ### 8. Alert Configuration
 
-![Alert Configuration](screenshots/8-alert-config.png)
+![Alert Configuration](screenshots/8-alert-config.PNG)
 
 An alert was configured with the following parameters:
 
@@ -259,7 +259,7 @@ This enables automated detection of suspicious behaviour.
 
 ### 9. Dashboard Visualisation
 
-![Dashboard](screenshots/9-dashboard.png)
+![Dashboard](screenshots/9-dashboard.PNG)
 
 A dashboard was created to provide a centralised view of:
 
