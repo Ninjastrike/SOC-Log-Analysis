@@ -44,117 +44,61 @@ Full credit to **Rajneesh Gupta (0xrajneesh)** for providing structured learning
 
 ## 🔍 Log Analysis Workflow
 
+This section outlines the technical steps used to process and analyse the SSH logs.
+
 ### 1. Log Ingestion
 
-SSH log files were uploaded into Splunk using the **Add Data** feature and indexed for analysis.
+SSH logs were uploaded into Splunk using the **Add Data** feature and indexed for analysis.
 
 ---
 
 ### 2. Field Extraction (Regex)
 
-Custom fields such as:
-
-* `src_ip`
-* `dest_ip`
-* `status`
-* `timestamp`
-
-were extracted from raw logs using regex.
-
-```spl id="1"}
+```spl
 | rex field=_raw "^(?<ts>\S+)\s+(?<uid>\S+)\s+(?<src_ip>\S+)\s+(?<src_port>\S+)\s+(?<dest_ip>\S+)\s+(?<dest_port>\S+)\s+(?<status>\S+)"
 ```
+
+Extracts structured fields from raw logs for analysis.
 
 ---
 
 ### 3. Detection: Top Attacking IPs
 
-```spl id="2"}
+```spl
 | search status="failure"
 | stats count by src_ip
 | sort - count
 ```
 
-Identifies IP addresses generating the most failed login attempts.
+Identifies source IPs generating high volumes of failed login attempts.
 
 ---
 
-### 4. Investigation: Suspicious IP Behaviour
+### 4. Investigation: Source IP Behaviour
 
-```spl id="3"}
+```spl
 | search src_ip="X.X.X.X"
 | stats count by status
 ```
 
-Used to determine whether login attempts were successful or failed.
+Evaluates authentication outcomes for a specific IP.
 
 ---
 
 ### 5. Tool Detection (Nmap)
 
-```spl id="4"}
+```spl
 | search client_ssh="*Nmap*"
 | stats count by src_ip dest_ip
 ```
 
-Detection of Nmap signatures such as:
-
-* `SSH-2.0-Nmap-SSH2-Hostkey`
-* `SSH-1.5-NmapNSE_1.0`
-
-These indicate automated scanning activity rather than legitimate user behaviour.
-
----
-
-## 📊 Dashboard
-
-A Splunk dashboard was created to provide a visual overview of SSH activity.
-
-### Panels:
-
-* **Top Attacking Source IPs**
-* **SSH Authentication Outcomes**
-* **Detected Nmap Scanning Activity**
-
-📸 *(Insert dashboard screenshot here)*
-
----
-
-## 🚨 Alert Implementation
-
-An alert was configured to detect brute-force activity.
-
-### Detection Logic
-
-Triggers when:
-
-* A source IP generates **20 or more failed login attempts**
-* Within a **5-minute window**
-
-### Alert Query
-
-```spl id="5"}
-| eval _time=ts
-| search status="failure"
-| bin _time span=5m
-| stats count by src_ip _time
-| where count >= 20
-```
-
-### Configuration
-
-* Schedule: Every 5 minutes
-* Time range: Last 5 minutes
-* Trigger condition: Results > 0
-* Severity: Medium
-
-📸 *(Insert alert configuration screenshot here)*
+Detects automated scanning tools based on SSH client signatures.
 
 ---
 
 ## 📸 Analysis Walkthrough
 
-This section demonstrates how the investigation was conducted step-by-step, simulating a real SOC analyst workflow from detection to validation.
+This section demonstrates the investigation process step-by-step, simulating how a SOC analyst would detect, analyse, and validate suspicious activity.
 
 ---
 
@@ -164,7 +108,7 @@ This section demonstrates how the investigation was conducted step-by-step, simu
 
 Raw SSH logs were parsed using regex to extract structured fields such as `src_ip`, `dest_ip`, and `status`.
 
-This step is essential as it converts unstructured log data into searchable and analysable fields within Splunk.
+This enables efficient querying and investigation within Splunk.
 
 ---
 
@@ -172,9 +116,9 @@ This step is essential as it converts unstructured log data into searchable and 
 
 ![Top Attacking IPs](screenshots/2-top-attacker.PNG)
 
-Analysis of failed authentication attempts revealed that **192.168.202.141** generated the highest number of failures (~2365 attempts).
+The analysis identified **192.168.202.141** as the most active source, generating approximately **2365 failed login attempts**.
 
-This behaviour is highly indicative of a brute-force attack attempting to gain unauthorised access.
+This volume is highly indicative of brute-force behaviour.
 
 ---
 
@@ -182,9 +126,9 @@ This behaviour is highly indicative of a brute-force attack attempting to gain u
 
 ![Investigate IP](screenshots/3-investigate-ip.PNG)
 
-Further investigation of the identified IP shows repeated login attempts across multiple timestamps and target systems.
+Further inspection shows repeated login attempts across multiple timestamps and systems.
 
-No successful authentication events were observed, suggesting persistent but unsuccessful brute-force activity.
+No successful logins were observed, suggesting persistent but unsuccessful brute-force attempts.
 
 ---
 
@@ -192,12 +136,7 @@ No successful authentication events were observed, suggesting persistent but uns
 
 ![Failure vs Success](screenshots/4-failure-vs-success.PNG)
 
-The breakdown of authentication outcomes shows:
-
-* A very high number of failures
-* Minimal or no successful logins
-
-This pattern strongly reinforces the presence of brute-force behaviour.
+The overwhelming number of failures compared to successful logins reinforces the likelihood of a brute-force attack.
 
 ---
 
@@ -205,11 +144,11 @@ This pattern strongly reinforces the presence of brute-force behaviour.
 
 ![Target Systems](screenshots/5-target-systems.PNG)
 
-The analysis indicates that the attacker primarily targeted:
+The attacker primarily targeted:
 
 * **192.168.229.101**
 
-This suggests a focused attack rather than random scanning across multiple systems.
+This indicates a focused attack rather than broad, random scanning.
 
 ---
 
@@ -222,9 +161,7 @@ The presence of signatures such as:
 * `SSH-2.0-Nmap-SSH2-Hostkey`
 * `SSH-1.5-NmapNSE_1.0`
 
-indicates that automated tools were used.
-
-This confirms that the activity is not manual but part of scripted reconnaissance or scanning.
+confirms the use of automated tools for reconnaissance.
 
 ---
 
@@ -232,13 +169,11 @@ This confirms that the activity is not manual but part of scripted reconnaissanc
 
 ![Alert Query](screenshots/7-alert-query.PNG)
 
-A detection query was created to identify brute-force behaviour by:
+A detection rule was created to identify brute-force activity by:
 
-* Grouping events into 5-minute intervals
+* Grouping events into 5-minute windows
 * Counting failed login attempts per source IP
-* Flagging IPs exceeding a defined threshold (≥20 attempts)
-
-This mirrors real-world SOC detection logic.
+* Flagging IPs exceeding a threshold (≥20 attempts)
 
 ---
 
@@ -246,14 +181,14 @@ This mirrors real-world SOC detection logic.
 
 ![Alert Configuration](screenshots/8-alert-config.PNG)
 
-An alert was configured with the following parameters:
+The alert was configured with:
 
 * Schedule: Every 5 minutes
 * Time range: Last 5 minutes
 * Trigger condition: Results > 0
 * Severity: Medium
 
-This enables automated detection of suspicious behaviour.
+This enables proactive detection.
 
 ---
 
@@ -261,89 +196,71 @@ This enables automated detection of suspicious behaviour.
 
 ![Dashboard](screenshots/9-dashboard.PNG)
 
-A dashboard was created to provide a centralised view of:
+The dashboard provides a consolidated view of:
 
-* Top attacking source IPs
+* Top attacking IPs
 * Authentication outcomes
 * Indicators of automated scanning
 
-This improves visibility and supports faster incident response.
+This improves monitoring and incident response efficiency.
 
 ---
 
 ## 🧠 Key Findings
 
 * A single source IP generated a significantly high number of failed login attempts
-* No successful logins were observed, indicating unsuccessful brute-force attempts
-* Presence of Nmap signatures confirmed automated scanning behaviour
-* Multiple destination IPs were targeted, suggesting reconnaissance activity
+* No successful logins were observed
+* Automated scanning activity (Nmap) was detected
+* A specific system was repeatedly targeted
 
 ---
 
 ## 🚨 Indicators of Compromise (IOCs)
 
-The following indicators were identified during the analysis:
-
 ### 🔹 Suspicious Source IPs
 
 * **192.168.202.141**
 
-  * Generated ~2365 failed login attempts
-  * Primary source of brute-force activity
-
-* Additional attacking IPs observed with lower volumes
+  * ~2365 failed login attempts
+  * Primary brute-force source
 
 ---
 
-### 🔹 Targeted Destination Systems
+### 🔹 Targeted Systems
 
 * **192.168.229.101**
 
   * Most frequently targeted host
-  * Indicates focused attack rather than random scanning
 
 ---
 
 ### 🔹 Behavioural Indicators
 
-* High volume of repeated authentication failures
-* Rapid consecutive login attempts within short time intervals
-* No successful authentication events observed
-
-These patterns are consistent with brute-force attack techniques.
+* High frequency of failed login attempts
+* Rapid repeated attempts within short time intervals
+* No successful authentication
 
 ---
 
-### 🔹 Tool / Signature Indicators
-
-Detected SSH client signatures associated with automated tools:
+### 🔹 Tool Indicators
 
 * `SSH-2.0-Nmap-SSH2-Hostkey`
 * `SSH-1.5-NmapNSE_1.0`
 
-These signatures indicate:
-
-* Automated reconnaissance activity
-* Use of scanning tools rather than legitimate user access
+Indicates automated reconnaissance using Nmap.
 
 ---
 
 ### 🔹 Temporal Indicators
 
-* Multiple failed attempts clustered within short time windows (≤5 minutes)
-* Behaviour triggered alert thresholds for brute-force detection
+* Multiple failed attempts within 5-minute windows
+* Triggered brute-force alert threshold
 
 ---
 
-### 🔹 Summary
+### 🔹 Conclusion
 
-The combination of:
-
-* High-frequency failed logins
-* Automated tool signatures
-* Focused targeting of specific systems
-
-strongly indicates **automated brute-force and reconnaissance activity** rather than normal user behaviour.
+The observed activity strongly indicates **automated brute-force and reconnaissance behaviour**, rather than legitimate user access.
 
 ---
 
@@ -374,6 +291,6 @@ strongly indicates **automated brute-force and reconnaissance activity** rather 
 
 ---
 
-[1]: https://github.com/0xrajneesh/Splunk-Projects-For-Beginners/blob/main/project%234-analyzing-ssh-logs-using-splunk-siem.md?utm_source=chatgpt.com "project#4-analyzing-ssh-logs-using-splunk-siem.md"
+[1]: https://github.com/0xrajneesh/Splunk-Projects-For-Beginners/blob/main/project%234-analyzing-ssh-logs-using-splunk-siem.md "project#4-analyzing-ssh-logs-using-splunk-siem.md"
 [2]: https://github.com/0xrajneesh/Splunk-Projects-For-Beginners?utm_source=chatgpt.com "Splunk SIEM Log Analysis Projects"
 
