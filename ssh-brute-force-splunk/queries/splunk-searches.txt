@@ -1,1 +1,66 @@
+==============================
+SSH BRUTE FORCE ANALYSIS QUERIES
+==============================
 
+[1] Field Extraction (Base Query)
+--------------------------------
+index=main
+| rex field=_raw "^(?<ts>\S+)\s+(?<uid>\S+)\s+(?<src_ip>\S+)\s+(?<src_port>\S+)\s+(?<dest_ip>\S+)\s+(?<dest_port>\S+)\s+(?<status>\S+)\s+(?<direction>\S+)\s+(?<client_ssh>\S+)\s+(?<server_ssh>\S+)"
+| eval readable_time=strftime(ts, "%Y-%m-%d %H:%M:%S")
+| table readable_time src_ip dest_ip status
+
+
+[2] Top Attacking Source IPs
+----------------------------
+index=main
+| rex field=_raw "^(?<ts>\S+)\s+(?<uid>\S+)\s+(?<src_ip>\S+)\s+(?<src_port>\S+)\s+(?<dest_ip>\S+)\s+(?<dest_port>\S+)\s+(?<status>\S+)"
+| search status="failure"
+| stats count by src_ip
+| sort - count
+
+
+[3] Investigate Specific Source IP
+----------------------------------
+index=main
+| rex field=_raw "^(?<ts>\S+)\s+(?<uid>\S+)\s+(?<src_ip>\S+)\s+(?<src_port>\S+)\s+(?<dest_ip>\S+)\s+(?<dest_port>\S+)\s+(?<status>\S+)"
+| search src_ip="X.X.X.X"
+| eval readable_time=strftime(ts, "%Y-%m-%d %H:%M:%S")
+| sort ts
+| table readable_time dest_ip status
+
+
+[4] Authentication Outcome Breakdown
+------------------------------------
+index=main
+| rex field=_raw "^(?<ts>\S+)\s+(?<uid>\S+)\s+(?<src_ip>\S+)\s+(?<src_port>\S+)\s+(?<dest_ip>\S+)\s+(?<dest_port>\S+)\s+(?<status>\S+)"
+| search src_ip="X.X.X.X"
+| stats count by status
+
+
+[5] Target Systems Analysis
+---------------------------
+index=main
+| rex field=_raw "^(?<ts>\S+)\s+(?<uid>\S+)\s+(?<src_ip>\S+)\s+(?<src_port>\S+)\s+(?<dest_ip>\S+)\s+(?<dest_port>\S+)\s+(?<status>\S+)"
+| search src_ip="X.X.X.X"
+| stats count by dest_ip
+| sort - count
+
+
+[6] Nmap Detection
+------------------
+index=main
+| rex field=_raw "^(?<ts>\S+)\s+(?<uid>\S+)\s+(?<src_ip>\S+)\s+(?<src_port>\S+)\s+(?<dest_ip>\S+)\s+(?<dest_port>\S+)\s+(?<status>\S+)\s+(?<direction>\S+)\s+(?<client_ssh>\S+)\s+(?<server_ssh>\S+)"
+| search client_ssh="*Nmap*"
+| stats count by src_ip dest_ip status
+| sort - count
+
+
+[7] Brute Force Alert Query
+---------------------------
+index=main
+| rex field=_raw "^(?<ts>\S+)\s+(?<uid>\S+)\s+(?<src_ip>\S+)\s+(?<src_port>\S+)\s+(?<dest_ip>\S+)\s+(?<dest_port>\S+)\s+(?<status>\S+)"
+| eval _time=ts
+| search status="failure"
+| bin _time span=5m
+| stats count by src_ip _time
+| where count >= 20
