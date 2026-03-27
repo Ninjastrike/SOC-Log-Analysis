@@ -64,3 +64,4 @@ index=main
 | bin _time span=5m
 | stats count by src_ip _time
 | where count >= 20
+| sort - count
