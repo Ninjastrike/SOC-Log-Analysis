@@ -98,7 +98,7 @@ Detects automated scanning tools based on SSH client signatures.
 
 ## 📸 Analysis Walkthrough
 
-This section demonstrates the investigation process step-by-step, simulating how a SOC analyst would detect, analyse, and validate suspicious activity.
+This section follows a typical SOC workflow: Detection → Investigation → Validation → Monitoring.
 
 ---
 
@@ -179,6 +179,8 @@ A detection rule was created to identify brute-force activity by:
 
 ### 8. Alert Configuration
 
+This alert simulates real-world SOC monitoring by detecting abnormal authentication patterns in near real-time.
+
 ![Alert Configuration](screenshots/8-alert-config.PNG)
 
 The alert was configured with:
@@ -208,14 +210,16 @@ This improves monitoring and incident response efficiency.
 
 ## 🧠 Key Findings
 
-* A single source IP generated a significantly high number of failed login attempts
-* No successful logins were observed
-* Automated scanning activity (Nmap) was detected
-* A specific system was repeatedly targeted
+- **192.168.202.141** generated over **2365 failed login attempts**, indicating a likely brute-force source  
+- No successful authentication events were observed, suggesting unsuccessful intrusion attempts  
+- SSH client signatures linked to **Nmap** confirmed automated scanning behaviour  
+- The attack was primarily focused on **192.168.229.101**, indicating targeted reconnaissance  
 
 ---
 
 ## 🚨 Indicators of Compromise (IOCs)
+
+The following indicators were identified during log analysis and can be used for detection and threat hunting.
 
 ### 🔹 Suspicious Source IPs
 
