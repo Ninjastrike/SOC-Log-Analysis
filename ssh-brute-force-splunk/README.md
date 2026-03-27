@@ -160,7 +160,7 @@ This section demonstrates how the investigation was conducted step-by-step, simu
 
 ### 1. Field Extraction
 
-![Field Extraction](screenshots/1-field-extraction.png)
+![Field Extraction](screenshots/1-field-extraction.PNG)
 
 Raw SSH logs were parsed using regex to extract structured fields such as `src_ip`, `dest_ip`, and `status`.
 
