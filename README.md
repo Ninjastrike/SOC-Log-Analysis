@@ -1,166 +1,112 @@
-# Project Title
+# SOC Log Analysis
+
+A collection of hands-on Security Operations Centre (SOC) and blue team log analysis projects using real-world tools such as Splunk.
+This repository demonstrates practical skills in detection, investigation, and basic alerting across different log sources.
 
 ---
 
-## Intro
+## 🧠 Overview
+
+This repository is designed to showcase how raw logs can be transformed into meaningful security insights. Each project focuses on identifying suspicious behaviour, analysing patterns, and simulating real SOC workflows.
+
+Key focus areas include:
+
+* Log ingestion and parsing
+* Field extraction using regex
+* Detection of suspicious activity
+* Investigation of attacker behaviour
+* Visualisation through dashboards
+* Alert creation for proactive monitoring
 
 ---
 
-## Tools used
+## 📂 Project Structure
+
+```
+soc-log-analysis/
+├── README.md
+├── ssh-brute-force-splunk/
+│   ├── README.md
+│   ├── screenshots/
+│   └── queries/
+```
+
+More projects will be added over time, including:
+
+* Web traffic (HTTP) analysis
+* DNS log analysis
+* Windows event log analysis
+* Cloud / identity-based log analysis
 
 ---
 
-## Dataset/log Source
+## 🔍 Current Project
+
+### SSH Brute Force Detection using Splunk
+
+This project analyses SSH logs to identify potential brute-force login attempts and automated scanning activity.
+
+**Key components:**
+
+* Detection of high-volume failed login attempts
+* Identification of top attacking source IPs
+* Investigation of authentication outcomes (failure vs success)
+* Detection of automated tools (e.g. Nmap)
+* Dashboard visualisation for SOC monitoring
+* Alert implementation for real-time detection
 
 ---
 
-## Objective
+## 🛠️ Tools & Technologies
+
+* Splunk Enterprise
+* SPL (Search Processing Language)
+* Regular Expressions (regex)
+* GitHub
 
 ---
 
-## Summary of Findings
+## 🧩 Skills Demonstrated
+
+* Log analysis and interpretation
+* Detection engineering fundamentals
+* Threat identification and behaviour analysis
+* Data visualisation (dashboards)
+* Basic alert configuration
+* Security-focused problem solving
 
 ---
 
-## Folder Structure
-# 🚀 Lakeflow Clickstream Pipeline: Declarative Data Engineering
+## 🚨 Example Use Cases
 
-![Overall Project Architecture](images_and_videos/Overall%20project%20image.png)
-
-![Databricks](https://img.shields.io/badge/Platform-Splunk-orange.svg)
-![Spark](https://img.shields.io/badge/Framework-Apache_Spark-red.svg)
-![Lakeflow](https://img.shields.io/badge/Engine-Lakeflow_Declarative-blue.svg)
-
----
-
-## 📖 Executive Summary
-
-A *production-style, real-time Lakeflow Spark Declarative Pipeline* for ingesting and processing high-velocity clickstream data on Azure Databricks.
-
-This project intentionally applies *best practices and key features captured during Databricks certification, translating them into a **declarative, serverless, and resilient pipeline* aligned with the *June 2025 GA Lakeflow syntax*.  
-
-The design prioritises *clarity, correctness, cost efficiency, and operational simplicity, shifting from procedural ETL toward a **desired-state data engineering model*.
+* Detecting brute-force authentication attempts
+* Identifying suspicious source IP behaviour
+* Recognising automated scanning tools (e.g. Nmap)
+* Monitoring authentication trends
+* Creating alerts for abnormal activity
 
 ---
 
-## 🏗️ Architecture & Data Flow
+## 📌 Future Improvements
 
-The pipeline follows a *Medallion Lakehouse Architecture, governed by **Unity Catalog* and deployed via *Databricks Asset Bundles (DABs)*.
-
-### *Data Source*
-- Python-based clickstream event producer
-- Authenticated using *Azure Managed Identity*
-- Emits *nested JSON events* into ADLS Gen2 for near-real-time ingestion
-
-### *Lakehouse Layers*
-- *Bronze (Ingestion)*  
-  - Incremental ingestion using *Auto Loader*
-  - Schema enforcement via StructType
-  - _rescued_data column to isolate malformed records and schema drift without stopping the pipeline
-
-- *Silver (Refinement)*  
-  - Exactly-once processing using checkpointing and event-time watermarking
-  - PII pseudonymisation using *SHA-256 hashing*
-  - Deterministic state handling for late-arriving data
-
-- *Gold (Analytics)*  
-  - Analytics-ready *Star Schema*
-  - *SCD Type 2* history tracking
-  - *Materialized Views* for low-latency BI consumption
+* Additional log sources and datasets
+* More advanced detection logic
+* Correlation across multiple log types
+* Enhanced dashboards
+* Integration with cloud-based SIEM tools
 
 ---
 
-## 🧠 Lakeflow Declarative Engineering (GA June 2025)
+## 🏷️ Tags
 
-The pipeline is implemented using the *Lakeflow Spark Declarative API* (pyspark.pipelines as dp), replacing procedural orchestration with explicit, intention-driven semantics.
-
-- *Explicit dataset intent*
-  - @dp.table
-  - @dp.materialized_view
-  - @dp.temporary_view
-
-- *Declarative change handling*
-  - dp.apply_changes(stored_as_scd_type=1/2) replaces hand-written MERGE INTO logic
-  - Eliminates custom state, trigger, and checkpoint orchestration
-
-- *Event-time semantics*
-  - Watermarking declared at the data level using dp.read_stream().withWatermark()
-  - Execution, retries, and recovery handled by the platform
-
-This approach improves *readability, reviewability, and maintainability*, while reducing engineering time spent on orchestration and debugging.
+`#SOC` `#CyberSecurity` `#BlueTeam` `#Splunk` `#SIEM` `#LogAnalysis`
+`#ThreatDetection` `#SecurityOperations` `#Regex` `#IncidentResponse`
 
 ---
 
-## 🛡️ Resilience, Self-Healing & Cost Efficiency
+## 📎 Notes
 
-The pipeline is designed to operate continuously with minimal manual intervention:
-
-- *Serverless execution*
-  - Fully managed compute with no cluster lifecycle management
-  - Billed per execution time (not idle)
-  - Automatically scales for bursty workloads
-
-- *Schema & data quality isolation*
-  - _rescued_data captures corrupted records
-  - Declarative expectations (@dp.expect) log, quarantine, or drop low-quality data without halting valid processing
-
-- *Automatic optimisation*
-  - *Liquid Clustering* (clusterByAuto=True) dynamically optimises data layout
-  - Eliminates manual partitioning and Z-Ordering
-
-- *Fault tolerance*
-  - Delta Lake ACID guarantees prevent partial writes
-  - Checkpointing enables safe restarts and automatic backfill
-  - Job-level retries handle transient failures
+This repository is built for learning and portfolio demonstration purposes.
+All datasets used are publicly available or simulated environments.
 
 ---
-
-## 🔎 Observability & Governance
-
-Databricks-native observability features provide fast diagnosis and controlled recovery:
-
-- Pipeline run history with success/failure diagnostics
-- Quality expectation and quarantine reports
-- End-to-end lineage across tables and views
-- Execution metrics for throughput and latency analysis
-
-Access and governance are enforced via:
-- *Unity Catalog*
-- *Microsoft Entra ID group-based RBAC*
-- Secret-free authentication using Managed Identity
-
----
-
-## 🚢 Deployment & Automation
-
-The project is deployed using *Databricks Asset Bundles (DABs)*:
-
-- Environment-agnostic configuration
-- Version-controlled infrastructure
-- Hands-free deployment via *GitHub Actions*
-- Clear separation of pipeline logic and orchestration
-
----
-
-## 📂 Repository Structure
-
-| Path | Description |
-|------|------------|
-| databricks.yml | DAB blueprint and environment configuration |
-| resources/ | Pipeline and job definitions (Infrastructure-as-Code) |
-| src/ | Lakeflow declarative transformations |
-| scripts/ | Managed-identity clickstream event producer |
-
----
-
-## 🛠️ Skills Demonstrated
-
-- *Databricks:* Lakeflow Declarative Pipelines, Asset Bundles, Unity Catalog, Delta Lake  
-- *Azure:* ADLS Gen2, Managed Identity, Entra ID (RBAC), Serverless Compute  
-- *Data Engineering:* Exactly-once processing, SCD Type 2, Star Schema, PII pseudonymisation  
-
----
-
-### Closing Note
-
-This project represents a deliberate effort to move from *certification knowledge to production-style execution*, applying declarative and platform-managed patterns to reduce complexity, cost, and operational risk.
