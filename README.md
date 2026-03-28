@@ -7,7 +7,7 @@ This repository demonstrates practical skills in detection, investigation, and b
 
 ## 🧠 Overview
 
-This repository is designed to showcase how raw logs can be transformed into meaningful security insights. Each project focuses on identifying suspicious behaviour, analysing patterns, and simulating real SOC workflows.
+This repository demonstrates how raw security logs can be transformed into actionable security insights using real-world SOC workflows.
 
 Key focus areas include:
 
@@ -71,7 +71,7 @@ More projects will be added over time, including:
 
 ### SSH Brute Force Detection using Splunk
 
-This project analyses SSH logs to identify potential brute-force login attempts and automated scanning activity.
+This project simulates a real-world brute-force attack investigation using SSH logs in Splunk.
 
 **Key components:**
 
@@ -111,6 +111,13 @@ This project analyses SSH logs to identify potential brute-force login attempts 
 * Recognising automated scanning tools (e.g. Nmap)
 * Monitoring authentication trends
 * Creating alerts for abnormal activity
+
+---
+
+## 🎯 Why This Matters
+
+In real-world environments, analysts cannot manually review every log entry.  
+Detection logic, dashboards, and alerts are essential to identify threats efficiently and prioritise investigations.
 
 ---
 
