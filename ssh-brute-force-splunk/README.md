@@ -52,7 +52,13 @@ SSH logs were uploaded into Splunk using the **Add Data** feature and indexed fo
 
 ---
 
-### 2. Field Extraction (Regex)
+### 2. Field Extraction Approach
+
+The SSH dataset used in this project is unstructured and does not contain predefined headers. As a result, Splunk treats each log entry as raw data (`_raw`) during ingestion and does not automatically extract fields such as source IP or destination IP.
+
+To address this, fields were extracted using regular expressions (`rex`) at search time.
+
+#### Regex Extraction Query
 
 This approach reflects real-world SOC workflows, where analysts often work with unstructured logs and perform on-the-fly field extraction for investigation and threat detection.
 
@@ -60,13 +66,11 @@ This approach reflects real-world SOC workflows, where analysts often work with 
 | rex field=_raw "^(?<ts>\S+)\s+(?<uid>\S+)\s+(?<src_ip>\S+)\s+(?<src_port>\S+)\s+(?<dest_ip>\S+)\s+(?<dest_port>\S+)\s+(?<status>\S+)"
 ```
 
-Extracts structured fields from raw logs for analysis.
-
-Field Extraction Approach
-
-The SSH dataset used in this project is unstructured and does not contain predefined headers. As a result, Splunk treats each log entry as raw data (`_raw`) during ingestion and does not automatically extract fields such as source IP or destination IP.
-
-To address this, fields were extracted using regular expressions (`rex`) at search time.
+This extracts structured fields such as:
+* ts (timestamp)
+* src_ip (source IP)
+* dest_ip (destination IP)
+* status (authentication result)
 
 ---
 
