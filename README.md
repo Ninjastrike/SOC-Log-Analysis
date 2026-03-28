@@ -20,6 +20,14 @@ Key focus areas include:
 
 ---
 
+## 🔍 SOC Workflow Overview
+
+This diagram illustrates the end-to-end SOC workflow implemented in this project, from log ingestion to threat detection and alerting.
+
+![SOC Workflow](screenshots/10-ssh-project-overview.PNG)
+
+---
+
 ## 💼 Business Value
 
 This project demonstrates how security log analysis can deliver tangible value to organisations by improving threat detection, operational efficiency, and risk reduction.
