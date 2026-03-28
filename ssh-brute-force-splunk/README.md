@@ -227,12 +227,23 @@ This improves monitoring and incident response efficiency.
 
 ---
 
-## 🧠 Key Findings
+## 📝 Incident Summary
 
-- **192.168.202.141** generated over **2365 failed login attempts**, indicating a likely brute-force source  
-- No successful authentication events were observed, suggesting unsuccessful intrusion attempts  
-- SSH client signatures linked to **Nmap** confirmed automated scanning behaviour  
-- The attack was primarily focused on **192.168.229.101**, indicating targeted reconnaissance  
+A source IP (192.168.202.141) generated over 2365 failed SSH login attempts targeting multiple systems. Analysis revealed no successful authentication but identified Nmap signatures, indicating automated reconnaissance and brute-force activity.
+
+Detection logic and alerts were implemented to monitor similar behaviour and enable proactive response.
+
+---
+
+⚠️ Challenges & Limitations
+	*	Unstructured Log Format
+The dataset did not include predefined headers, requiring custom regex extraction to parse fields.
+	*	Lack of Ground Truth
+No confirmed successful compromise was present, requiring inference based on behavioural patterns and indicators.
+	*	Noise vs Signal
+High volumes of failed authentication attempts required filtering to identify meaningful patterns.
+	*	Detection vs Confirmation
+The analysis focused on detecting suspicious behaviour, but additional correlation would be required to confirm a full security incident in a real-world scenario
 
 ---
 
