@@ -30,29 +30,22 @@ This diagram illustrates the end-to-end SOC workflow implemented in this project
 
 ## 💼 Business Value
 
-This project demonstrates how security log analysis can deliver tangible value to organisations by improving threat detection, operational efficiency, and risk reduction.
+This project demonstrates how effective log analysis can improve organisational security operations:
 
-From a business perspective, the implemented workflows support:
+- **Improved Threat Detection**  
+  Identifies brute-force attacks and suspicious behaviour early
 
-* Early Threat Detection  
-  Identifies brute-force attacks and automated scanning activity before successful compromise occurs.
+- **Reduced Mean Time to Respond (MTTR)**  
+  Structured queries and dashboards enable faster investigation
 
-* Reduced Investigation Time  
-  Structured field extraction and targeted queries enable faster analysis compared to manual log review.
+- **Reduced Alert Fatigue**  
+  Detection logic filters noise and highlights meaningful threats
 
-* Improved Security Monitoring  
-  Dashboards provide clear visibility into authentication trends and attacker behaviour, supporting quicker decision-making.
+- **Centralised Visibility**  
+  Aggregates logs into a single platform for efficient monitoring
 
-* Proactive Defence through Alerting  
-  Automated alerts allow security teams to respond to suspicious activity in near real-time.
-
-*  Reduction of False Positives  
-  Rule-based detection logic helps focus attention on meaningful events, improving analyst efficiency.
-
-*  Scalable Security Operations  
-  Demonstrates how SIEM tools like Splunk can be used to handle large volumes of log data in a structured and repeatable way.
-
-Overall, this project reflects how technical log analysis translates into actionable security insights that support business continuity and risk management.
+- **Proactive Security Posture**  
+  Alerts allow teams to respond before incidents escalate
 
 ---
 
