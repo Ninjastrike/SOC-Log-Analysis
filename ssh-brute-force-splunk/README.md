@@ -316,16 +316,16 @@ The observed activity strongly indicates **automated brute-force and reconnaissa
 ---
 
 ![SOC](https://img.shields.io/badge/SOC-blue)
-![CyberSecurity](https://img.shields.io/badge/CyberSecurity-red)
-![BlueTeam](https://img.shields.io/badge/BlueTeam-1f77b4)
-![Splunk](https://img.shields.io/badge/Splunk-green)
-![SIEM](https://img.shields.io/badge/SIEM-orange)
-![LogAnalysis](https://img.shields.io/badge/LogAnalysis-yellow)
-![ThreatDetection](https://img.shields.io/badge/ThreatDetection-critical)
-![BruteForce](https://img.shields.io/badge/BruteForce-red)
-![Nmap](https://img.shields.io/badge/Nmap-black)
-![SecurityOperations](https://img.shields.io/badge/SecurityOperations-purple)
+![CyberSecurity](https://img.shields.io/badge/CyberSecurity-blue)
+![BlueTeam](https://img.shields.io/badge/BlueTeam-blue)
+![Splunk](https://img.shields.io/badge/Splunk-blue)
+![SIEM](https://img.shields.io/badge/SIEM-blue)
+![LogAnalysis](https://img.shields.io/badge/LogAnalysis-blue)
+![ThreatDetection](https://img.shields.io/badge/ThreatDetection-blue)
+![BruteForce](https://img.shields.io/badge/BruteForce-blue)
+![Nmap](https://img.shields.io/badge/Nmap-blue)
+![SecurityOperations](https://img.shields.io/badge/SecurityOperations-blue)
 
 [1]: https://github.com/0xrajneesh/Splunk-Projects-For-Beginners/blob/main/project%234-analyzing-ssh-logs-using-splunk-siem.md "project#4-analyzing-ssh-logs-using-splunk-siem.md"
-[2]: https://github.com/0xrajneesh/Splunk-Projects-For-Beginners?utm_source=chatgpt.com "Splunk SIEM Log Analysis Projects"
+[2]: https://github.com/0xrajneesh/Splunk-Projects-For-Beginners "Splunk SIEM Log Analysis Projects"
 
