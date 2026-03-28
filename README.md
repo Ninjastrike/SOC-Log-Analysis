@@ -20,6 +20,34 @@ Key focus areas include:
 
 ---
 
+## 💼 Business Value
+
+This project demonstrates how security log analysis can deliver tangible value to organisations by improving threat detection, operational efficiency, and risk reduction.
+
+From a business perspective, the implemented workflows support:
+
+* Early Threat Detection  
+  Identifies brute-force attacks and automated scanning activity before successful compromise occurs.
+
+* Reduced Investigation Time  
+  Structured field extraction and targeted queries enable faster analysis compared to manual log review.
+
+* Improved Security Monitoring  
+  Dashboards provide clear visibility into authentication trends and attacker behaviour, supporting quicker decision-making.
+
+* Proactive Defence through Alerting  
+  Automated alerts allow security teams to respond to suspicious activity in near real-time.
+
+*  Reduction of False Positives  
+  Rule-based detection logic helps focus attention on meaningful events, improving analyst efficiency.
+
+*  Scalable Security Operations  
+  Demonstrates how SIEM tools like Splunk can be used to handle large volumes of log data in a structured and repeatable way.
+
+Overall, this project reflects how technical log analysis translates into actionable security insights that support business continuity and risk management.
+
+---
+
 ## 📂 Project Structure
 
 ```
