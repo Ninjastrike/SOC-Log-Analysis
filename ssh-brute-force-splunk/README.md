@@ -307,8 +307,6 @@ The observed activity strongly indicates **automated brute-force and reconnaissa
 
 ---
 
-## 🏷️ Tags
-
 ![SOC](https://img.shields.io/badge/SOC-blue)
 ![CyberSecurity](https://img.shields.io/badge/CyberSecurity-red)
 ![BlueTeam](https://img.shields.io/badge/BlueTeam-1f77b4)
