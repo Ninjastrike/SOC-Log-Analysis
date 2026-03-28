@@ -33,15 +33,6 @@ Full credit to **Rajneesh Gupta (0xrajneesh)** for providing structured learning
 
 ---
 
-## 🛠️ Tools & Technologies
-
-* Splunk Enterprise
-* SPL (Search Processing Language)
-* Regular Expressions (regex)
-* GitHub
-
----
-
 ## 🔍 Log Analysis Workflow
 
 This section outlines the technical steps used to process and analyse the SSH logs.
