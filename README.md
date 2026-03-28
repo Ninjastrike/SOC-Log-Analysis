@@ -26,6 +26,16 @@ This diagram illustrates the end-to-end SOC workflow implemented in this project
 
 ![SOC Workflow](ssh-brute-force-splunk/screenshots/10-ssh-project-overview.png)
 
+![SOC](https://img.shields.io/badge/SOC-blue)
+![CyberSecurity](https://img.shields.io/badge/CyberSecurity-blue)
+![BlueTeam](https://img.shields.io/badge/BlueTeam-blue)
+![Splunk](https://img.shields.io/badge/Splunk-blue)
+![SIEM](https://img.shields.io/badge/SIEM-blue)
+![LogAnalysis](https://img.shields.io/badge/LogAnalysis-blue)
+![ThreatDetection](https://img.shields.io/badge/ThreatDetection-blue)
+![SecurityOperations](https://img.shields.io/badge/SecurityOperations-blue)
+![Regex](https://img.shields.io/badge/Regex-blue)
+![IncidentResponse](https://img.shields.io/badge/IncidentResponse-blue)
 ---
 
 ## 💼 Business Value
@@ -125,16 +135,3 @@ Detection logic, dashboards, and alerts are essential to identify threats effici
 
 This repository is built for learning and portfolio demonstration purposes.
 All datasets used are publicly available or simulated environments.
-
----
-
-![SOC](https://img.shields.io/badge/SOC-blue)
-![CyberSecurity](https://img.shields.io/badge/CyberSecurity-red)
-![BlueTeam](https://img.shields.io/badge/BlueTeam-1f77b4)
-![Splunk](https://img.shields.io/badge/Splunk-green)
-![SIEM](https://img.shields.io/badge/SIEM-orange)
-![LogAnalysis](https://img.shields.io/badge/LogAnalysis-yellow)
-![ThreatDetection](https://img.shields.io/badge/ThreatDetection-critical)
-![SecurityOperations](https://img.shields.io/badge/SecurityOperations-purple)
-![Regex](https://img.shields.io/badge/Regex-lightgrey)
-![IncidentResponse](https://img.shields.io/badge/IncidentResponse-important)
