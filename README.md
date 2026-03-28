@@ -24,7 +24,7 @@ Key focus areas include:
 
 This diagram illustrates the end-to-end SOC workflow implemented in this project, from log ingestion to threat detection and alerting.
 
-![SOC Workflow](ssh-brute-force-splunk/screenshots/10-ssh-project-overview.PNG)
+![SOC Workflow](SOC-Log-Analysis/ssh-brute-force-splunk/screenshots/10-ssh-project-overview.PNG)
 
 ---
 
