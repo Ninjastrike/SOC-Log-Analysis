@@ -305,10 +305,6 @@ The observed activity strongly indicates **automated brute-force and reconnaissa
 * Visualisation improves situational awareness
 * Alerts enable proactive monitoring in SOC environments
 
----
-
-## 🏷️ Tags
-
 `#SOC` `#CyberSecurity` `#BlueTeam` `#Splunk` `#SIEM`
 `#LogAnalysis` `#ThreatDetection` `#BruteForce` `#Nmap` `#SecurityOperations`
 
