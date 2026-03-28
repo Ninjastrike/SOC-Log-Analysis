@@ -237,14 +237,10 @@ Detection logic and alerts were implemented to monitor similar behaviour and ena
 
 ## ⚠️ Challenges & Limitations
 
-* Unstructured Log Format
-The dataset did not include predefined headers, requiring custom regex extraction to parse fields.
-* Lack of Ground Truth
-No confirmed successful compromise was present, requiring inference based on behavioural patterns and indicators.
-* Noise vs Signal
-High volumes of failed authentication attempts required filtering to identify meaningful patterns.
-* Detection vs Confirmation
-The analysis focused on detecting suspicious behaviour, but additional correlation would be required to confirm a full security incident in a real-world scenario
+- **Unstructured Log Format** The dataset did not include predefined headers, requiring custom regex extraction to parse fields.
+- **Lack of Ground Truth** No confirmed successful compromise was present, requiring inference based on behavioural patterns and indicators.
+- **Noise vs Signal** High volumes of failed authentication attempts required filtering to identify meaningful patterns.
+- **Detection vs Confirmation** The analysis focused on detecting suspicious behaviour, but additional correlation would be required to confirm a full security incident in a real-world scenario.
 
 ---
 
