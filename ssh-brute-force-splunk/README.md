@@ -305,10 +305,10 @@ The observed activity strongly indicates **automated brute-force and reconnaissa
 * Visualisation improves situational awareness
 * Alerts enable proactive monitoring in SOC environments
 
+---
+
 `#SOC` `#CyberSecurity` `#BlueTeam` `#Splunk` `#SIEM`
 `#LogAnalysis` `#ThreatDetection` `#BruteForce` `#Nmap` `#SecurityOperations`
-
----
 
 [1]: https://github.com/0xrajneesh/Splunk-Projects-For-Beginners/blob/main/project%234-analyzing-ssh-logs-using-splunk-siem.md "project#4-analyzing-ssh-logs-using-splunk-siem.md"
 [2]: https://github.com/0xrajneesh/Splunk-Projects-For-Beginners?utm_source=chatgpt.com "Splunk SIEM Log Analysis Projects"
