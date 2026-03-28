@@ -180,7 +180,7 @@ The presence of signatures such as:
 * `SSH-2.0-Nmap-SSH2-Hostkey`
 * `SSH-1.5-NmapNSE_1.0`
 
-This strongly suggests the activity is automated and likely part of reconnaissance or attack preparation.
+This strongly suggests automated reconnaissance activity, commonly observed in the pre-attack phase.
 
 ---
 
