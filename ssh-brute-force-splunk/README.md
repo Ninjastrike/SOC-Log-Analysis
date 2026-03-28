@@ -67,15 +67,15 @@ This reflects real-world SOC workflows, where analysts often work with unstructu
 ```
 
 This extracts structured fields such as:
-* ts (timestamp)
-* src_ip (source IP)
-* dest_ip (destination IP)
-* status (authentication result)
+- ts (timestamp)
+- src_ip (source IP)
+- dest_ip (destination IP)
+- status (authentication result)
 
 Regex Explanation:
-* \S+ matches non-whitespace values (each column)
-* \s+ matches spaces between fields
-* (?<field_name>...) creates named fields in Splunk
+- \S+ matches non-whitespace values (each column)
+- \s+ matches spaces between fields
+- (?<field_name>...) creates named fields in Splunk
 
 This enables efficient filtering, aggregation, and threat detection using SPL queries.
 
