@@ -63,8 +63,6 @@ More projects will be added over time, including:
 
 * Web traffic (HTTP) analysis
 * DNS log analysis
-* Windows event log analysis
-* Cloud / identity-based log analysis
 
 ---
 
