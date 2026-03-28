@@ -229,7 +229,7 @@ This improves monitoring and incident response efficiency.
 
 ## 📝 Incident Summary
 
-A source IP (192.168.202.141) generated over 2365 failed SSH login attempts targeting multiple systems. Analysis revealed no successful authentication but identified Nmap signatures, indicating automated reconnaissance and brute-force activity.
+A source IP (192.168.202.141) generated over 2365 failed SSH login attempts targeting multiple systems. Analysis revealed no successful authentication and identified Nmap signatures, indicating automated reconnaissance and brute-force activity.
 
 Detection logic and alerts were implemented to monitor similar behaviour and enable proactive response.
 
@@ -249,11 +249,13 @@ Detection logic and alerts were implemented to monitor similar behaviour and ena
 - **Detection vs Confirmation**  
   The analysis focused on detecting suspicious behaviour, but additional correlation would be required to confirm a full security incident in a real-world scenario.
 
+These limitations reflect real-world SOC environments, where analysts must make decisions based on incomplete or imperfect data.
+
 ---
 
 ## 🚩 Indicators of Compromise (IOCs)
 
-The following indicators were identified during log analysis and can be used for detection and threat hunting.
+The following indicators were identified during  analysis and can be used for detection and threat hunting.
 
 ### 🔺 Suspicious Source IPs
 
