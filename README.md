@@ -121,16 +121,6 @@ Detection logic, dashboards, and alerts are essential to identify threats effici
 
 ---
 
-## 📌 Future Improvements
-
-* Additional log sources and datasets
-* More advanced detection logic
-* Correlation across multiple log types
-* Enhanced dashboards
-* Integration with cloud-based SIEM tools
-
----
-
 ## 📎 Notes
 
 This repository is built for learning and portfolio demonstration purposes.
