@@ -97,16 +97,12 @@ This project analyses SSH logs to identify potential brute-force login attempts 
 
 ---
 
-## 🏷️ Tags
-
-`#SOC` `#CyberSecurity` `#BlueTeam` `#Splunk` `#SIEM` `#LogAnalysis`
-`#ThreatDetection` `#SecurityOperations` `#Regex` `#IncidentResponse`
-
----
-
 ## 📎 Notes
 
 This repository is built for learning and portfolio demonstration purposes.
 All datasets used are publicly available or simulated environments.
 
 ---
+
+`#SOC` `#CyberSecurity` `#BlueTeam` `#Splunk` `#SIEM` `#LogAnalysis`
+`#ThreatDetection` `#SecurityOperations` `#Regex` `#IncidentResponse`
