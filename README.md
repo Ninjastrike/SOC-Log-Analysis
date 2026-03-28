@@ -130,5 +130,13 @@ All datasets used are publicly available or simulated environments.
 
 ---
 
-`#SOC` `#CyberSecurity` `#BlueTeam` `#Splunk` `#SIEM` `#LogAnalysis`
-`#ThreatDetection` `#SecurityOperations` `#Regex` `#IncidentResponse`
+![SOC](https://img.shields.io/badge/SOC-blue)
+![CyberSecurity](https://img.shields.io/badge/CyberSecurity-red)
+![BlueTeam](https://img.shields.io/badge/BlueTeam-1f77b4)
+![Splunk](https://img.shields.io/badge/Splunk-green)
+![SIEM](https://img.shields.io/badge/SIEM-orange)
+![LogAnalysis](https://img.shields.io/badge/LogAnalysis-yellow)
+![ThreatDetection](https://img.shields.io/badge/ThreatDetection-critical)
+![SecurityOperations](https://img.shields.io/badge/SecurityOperations-purple)
+![Regex](https://img.shields.io/badge/Regex-lightgrey)
+![IncidentResponse](https://img.shields.io/badge/IncidentResponse-important)
