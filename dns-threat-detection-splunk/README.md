@@ -79,6 +79,58 @@ This extracts structured fields such as:
 
 This enables efficient filtering, aggregation, and detection using SPL queries.
 
+---
+
+### 3. Detection: Top Queried Domains
+
+```spl
+| where dest_port=53
+| stats count by query
+| sort - count
+```
+
+Identifies high-frequency DNS queries to establish baseline behaviour and prioritise domains for further investigation.
+
+---
+
+### 4. Detection: NXDOMAIN Analysis
+
+```spl
+| where dest_port=53 AND rcode_name=“NXDOMAIN”
+| stats count by src_ip query
+| sort - count
+```
+
+Detects failed DNS resolutions, which may indicate suspicious domains, misconfigurations, or potential command-and-control (C2) activity.
+
+---
+
+### 5. Detection: Long Domain Names
+
+```spl
+| where dest_port=53
+| eval domain_length=len(query)
+| where domain_length > 40
+| table src_ip query domain_length
+| sort - domain_length
+```
+
+Identifies unusually long domain names, which may indicate DNS tunnelling or encoded data exfiltration.
+
+---
+
+### 6. Investigation: DNS Beaconing Behaviour
+
+```spl
+| where dest_port=53
+| eval _time=ts
+| bin _time span=5m
+| stats count by src_ip query _time
+| where count > 20
+| sort - count
+```
+
+Detects repeated DNS queries within fixed time intervals, which may indicate automated behaviour or beaconing activity associated with malware.
 
 ---
 
