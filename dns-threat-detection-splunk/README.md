@@ -48,18 +48,35 @@ DNS logs were uploaded into Splunk using the Add Data feature.
 
 ---
 
-### 2. Field Extraction
+### 2. Field Extraction Approach
 
-The dataset is unstructured, so fields were extracted using regex.
+The DNS dataset used in this project is unstructured and does not contain predefined headers. As a result, Splunk treats each log entry as raw data (`_raw`) during ingestion and does not automatically extract fields such as source IP, destination IP, or queried domain.
+
+To address this, fields were extracted at search time using regular expressions (`rex`).
+
+This reflects real-world SOC workflows, where analysts frequently work with unstructured logs and perform on-the-fly field extraction for investigation and threat detection.
 
 ```spl
-index=main
 | rex field=_raw “^(?\S+)\s+(?\S+)\s+(?<src_ip>\S+)\s+(?<src_port>\S+)\s+(?<dest_ip>\S+)\s+(?<dest_port>\S+)\s+(?\S+)\s+(?<trans_id>\S+)\s+(?\S+)\s+(?\S+)\s+(?<qclass_name>\S+)\s+(?\S+)\s+(?<qtype_name>\S+)\s+(?\S+)\s+(?<rcode_name>\S+)”
-| eval readable_time=strftime(ts, “%Y-%m-%d %H:%M:%S”)
-| table readable_time src_ip dest_ip query qtype_name rcode_name
 ```
 
----
+This extracts structured fields such as:
+
+- `ts` (timestamp)  
+- `src_ip` (source IP)  
+- `dest_ip` (destination DNS server)  
+- `query` (domain requested)  
+- `qtype_name` (query type)  
+- `rcode_name` (response code)  
+
+#### Regex Explanation
+
+- `\S+` matches non-whitespace values (each column)  
+- `\s+` matches spaces between fields  
+- `(?<field_name>...)` creates named fields in Splunk  
+
+This enables efficient filtering, aggregation, and detection using SPL queries.
+
 
 ---
 
