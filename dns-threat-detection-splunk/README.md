@@ -56,6 +56,8 @@ To address this, fields were extracted at search time using regular expressions 
 
 This reflects real-world SOC workflows, where analysts frequently work with unstructured logs and perform on-the-fly field extraction for investigation and threat detection.
 
+#### 🔍 Regex Extraction Query
+
 ```spl
 | rex field=_raw “^(?\S+)\s+(?\S+)\s+(?<src_ip>\S+)\s+(?<src_port>\S+)\s+(?<dest_ip>\S+)\s+(?<dest_port>\S+)\s+(?\S+)\s+(?<trans_id>\S+)\s+(?\S+)\s+(?\S+)\s+(?<qclass_name>\S+)\s+(?\S+)\s+(?<qtype_name>\S+)\s+(?\S+)\s+(?<rcode_name>\S+)”
 ```
