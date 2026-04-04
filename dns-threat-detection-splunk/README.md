@@ -238,7 +238,7 @@ Configuration:
 
 ### 9. Dashboard
 
-![Dashboard](screenshots/Combined dashboard.png)
+![Dashboard](screenshots/9-dashboard.PNG)
 
 Provides visibility into:
 
