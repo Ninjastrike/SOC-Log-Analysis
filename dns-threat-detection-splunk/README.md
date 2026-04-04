@@ -61,3 +61,12 @@ Fields were extracted at search time using regex.
 ```spl
 | rex field=_raw "^(?<ts>\S+)\s+(?<uid>\S+)\s+(?<src_ip>\S+)\s+(?<src_port>\S+)\s+(?<dest_ip>\S+)\s+(?<dest_port>\S+)\s+(?<proto>\S+)\s+(?<trans_id>\S+)\s+(?<query>\S+)\s+(?<qclass>\S+)\s+(?<qclass_name>\S+)\s+(?<qtype>\S+)\s+(?<qtype_name>\S+)\s+(?<rcode>\S+)\s+(?<rcode_name>\S+)"
 | eval readable_time=strftime(ts, "%Y-%m-%d %H:%M:%S")
+```
+---
+
+### 3. Detection: Top Queried Domains
+
+| stats count by query
+| sort - count
+
+---
