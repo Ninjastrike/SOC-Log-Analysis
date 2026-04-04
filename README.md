@@ -1,31 +1,25 @@
 # SOC Log Analysis
 
-A collection of hands-on Security Operations Centre (SOC) and blue team log analysis projects using real-world tools such as Splunk.
-This repository demonstrates practical skills in detection, investigation, and basic alerting across different log sources.
+A collection of hands-on Security Operations Centre (SOC) log analysis projects using Splunk, demonstrating real-world detection, investigation, and alerting workflows across multiple log sources.
 
 ---
 
 ## 🧠 Overview
 
-This repository demonstrates how raw security logs can be transformed into actionable security insights using real-world SOC workflows.
-
-Key focus areas include:
-
-* Log ingestion and parsing
-* Field extraction using regex
-* Detection of suspicious activity
-* Investigation of attacker behaviour
-* Visualisation through dashboards
-* Alert creation for proactive monitoring
-
----
-
-## 🔍 SOC Workflow Overview
-
-This diagram illustrates the end-to-end SOC workflow implemented in this project, from log ingestion to threat detection and alerting.
-
 ![SOC Workflow](ssh-brute-force-splunk/screenshots/10-ssh-project-overview.png)
 
+This repository demonstrates an end-to-end SOC workflow — from ingesting raw logs to detecting threats and triggering alerts.
+
+Instead of manually reviewing logs, this project shows how analysts:
+
+- Ingest and centralise logs into a single platform  
+- Extract fields from unstructured data using regex  
+- Detect suspicious behaviour using SPL queries  
+- Investigate attacker activity and patterns  
+- Visualise insights through dashboards  
+- Configure alerts for proactive monitoring  
+
+The workflow reflects how real SOC teams prioritise high-risk activity, reduce noise, and respond efficiently to potential threats.
 ![SOC](https://img.shields.io/badge/SOC-blue)
 ![CyberSecurity](https://img.shields.io/badge/CyberSecurity-blue)
 ![BlueTeam](https://img.shields.io/badge/BlueTeam-blue)
@@ -36,6 +30,7 @@ This diagram illustrates the end-to-end SOC workflow implemented in this project
 ![SecurityOperations](https://img.shields.io/badge/SecurityOperations-blue)
 ![Regex](https://img.shields.io/badge/Regex-blue)
 ![IncidentResponse](https://img.shields.io/badge/IncidentResponse-blue)
+
 ---
 
 ## 💼 Business Value
