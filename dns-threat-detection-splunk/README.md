@@ -21,9 +21,9 @@ In this project, raw DNS logs were ingested into Splunk, parsed using regular ex
 
 The dataset used in this project was adapted from:
 
-- https://github.com/0xrajneesh/Splunk-Projects-For-Beginners
+https://github.com/0xrajneesh/Splunk-Projects-For-Beginners
 
-Full credit to **Rajneesh Gupta (0xrajneesh)** for providing structured learning resources and datasets.
+Full credit to **Rajneesh Gupta (0xrajneesh)**.
 
 ---
 
@@ -32,41 +32,203 @@ Full credit to **Rajneesh Gupta (0xrajneesh)** for providing structured learning
 - Extract structured fields from raw DNS logs  
 - Identify top queried domains  
 - Detect NXDOMAIN (failed DNS resolutions)  
-- Identify suspicious or uncommon domains  
-- Detect long or abnormal domain names  
-- Identify potential DNS beaconing activity  
-- Build a monitoring dashboard  
-- Implement an alert for suspicious DNS behaviour  
+- Identify suspicious domains  
+- Detect long domain names  
+- Detect DNS beaconing behaviour  
+- Build dashboards  
+- Implement alerts  
 
 ---
 
 ## 🔍 Log Analysis Workflow
 
----
-
 ### 1. Log Ingestion
 
-DNS logs were uploaded into Splunk using the **Add Data** feature and indexed for analysis.
+DNS logs were uploaded into Splunk using the Add Data feature.
 
 ---
 
-### 2. Field Extraction Approach
+### 2. Field Extraction
 
-The DNS dataset is unstructured, so Splunk does not automatically extract fields.
-
-Fields were extracted at search time using regex.
-
-#### 🔍 Regex Extraction Query
+The dataset is unstructured, so fields were extracted using regex.
 
 ```spl
-| rex field=_raw "^(?<ts>\S+)\s+(?<uid>\S+)\s+(?<src_ip>\S+)\s+(?<src_port>\S+)\s+(?<dest_ip>\S+)\s+(?<dest_port>\S+)\s+(?<proto>\S+)\s+(?<trans_id>\S+)\s+(?<query>\S+)\s+(?<qclass>\S+)\s+(?<qclass_name>\S+)\s+(?<qtype>\S+)\s+(?<qtype_name>\S+)\s+(?<rcode>\S+)\s+(?<rcode_name>\S+)"
-| eval readable_time=strftime(ts, "%Y-%m-%d %H:%M:%S")
+index=main
+| rex field=_raw “^(?\S+)\s+(?\S+)\s+(?<src_ip>\S+)\s+(?<src_port>\S+)\s+(?<dest_ip>\S+)\s+(?<dest_port>\S+)\s+(?\S+)\s+(?<trans_id>\S+)\s+(?\S+)\s+(?\S+)\s+(?<qclass_name>\S+)\s+(?\S+)\s+(?<qtype_name>\S+)\s+(?\S+)\s+(?<rcode_name>\S+)”
+| eval readable_time=strftime(ts, “%Y-%m-%d %H:%M:%S”)
+| table readable_time src_ip dest_ip query qtype_name rcode_name
 ```
----
-
-### 3. Detection: Top Queried Domains
-
-| stats count by query
-| sort - count
 
 ---
+
+---
+
+## 📸 Analysis Walkthrough
+
+### 1. Field Extraction
+
+![Field Extraction](screenshots/1-field-extraction.PNG)
+
+Raw DNS logs were parsed into structured fields for analysis.
+
+---
+
+### 2. Top Queried Domains
+
+![Top Domains](screenshots/2-filter-relevant-dns-traffic.PNG)
+
+Common domains observed:
+
+- google.com  
+- apple.com  
+- microsoft.com  
+
+These indicate normal DNS activity.
+
+---
+
+### 3. NXDOMAIN Detection
+
+![NXDOMAIN](screenshots/3-detection-queries.PNG)
+
+Failed DNS queries were identified.
+
+Suspicious domains include:
+
+- rootshell-security.net  
+- xtral.gpsonextra.net  
+- data.t00ls.org  
+
+These may indicate malicious or unknown infrastructure.
+
+---
+
+### 4. Long Domain Detection
+
+![Long Domains](screenshots/4-long-domain-detection.PNG)
+
+Long or complex domains may indicate:
+
+- DNS tunnelling  
+- Encoded data exfiltration  
+
+---
+
+### 5. DNS Beaconing Detection
+
+![Beaconing](screenshots/5-beaconing-detection.PNG)
+
+Source IP:
+
+**10.10.117.210**
+
+shows repeated queries at regular intervals, indicating automated behaviour.
+
+---
+
+### 6. Query Type Analysis
+
+![Query Types](screenshots/6-query-type-analysis.PNG)
+
+Most queries are:
+
+- A  
+- AAAA  
+- PTR  
+
+This provides baseline behaviour.
+
+---
+
+### 7. Detection Rule (Alert Query)
+
+![Alert Query](screenshots/7-alert-query.PNG)
+
+Detection logic:
+
+- 5-minute window  
+- Count repeated queries  
+- Trigger if threshold exceeded  
+
+---
+
+### 8. Alert Configuration
+
+![Alert Config](screenshots/8-alert-config.PNG)
+
+Configuration:
+
+- Every 5 minutes  
+- Last 5 minutes window  
+- Trigger when results > 0  
+- Severity: Medium  
+
+---
+
+### 9. Dashboard
+
+![Dashboard](screenshots/Combined dashboard.png)
+
+Provides visibility into:
+
+- Top domains  
+- NXDOMAIN results  
+- Long domains  
+- Beaconing behaviour  
+
+---
+
+## 📝 Incident Summary
+
+A source IP (**10.10.117.210**) generated repeated DNS queries, indicating potential beaconing activity.
+
+Suspicious domains were also observed, suggesting possible interaction with unknown or malicious infrastructure.
+
+---
+
+## ⚠️ Challenges & Limitations
+
+- Unstructured logs required regex extraction  
+- High DNS noise  
+- NXDOMAIN is not always malicious  
+- Detection does not confirm compromise  
+
+---
+
+## 🚩 Indicators of Compromise (IOCs)
+
+### Suspicious Domains
+
+- rootshell-security.net  
+- xtral.gpsonextra.net  
+- data.t00ls.org  
+
+### Suspicious Source IP
+
+- 10.10.117.210  
+
+### Behavioural Indicators
+
+- Repeated DNS queries  
+- High NXDOMAIN frequency  
+- Long domain queries  
+
+---
+
+## 🧩 Skills Demonstrated
+
+- DNS log analysis  
+- Regex extraction  
+- Threat detection  
+- SOC investigation workflow  
+- Dashboard creation  
+- Alert configuration  
+
+---
+
+## 🚀 Key Takeaways
+
+- DNS logs provide strong visibility into network behaviour  
+- Behaviour patterns are key indicators  
+- Detection enables proactive monitoring
+
