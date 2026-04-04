@@ -20,6 +20,7 @@ Instead of manually reviewing logs, this project shows how analysts:
 - Configure alerts for proactive monitoring  
 
 The workflow reflects how real SOC teams prioritise high-risk activity, reduce noise, and respond efficiently to potential threats.
+
 ![SOC](https://img.shields.io/badge/SOC-blue)
 ![CyberSecurity](https://img.shields.io/badge/CyberSecurity-blue)
 ![BlueTeam](https://img.shields.io/badge/BlueTeam-blue)
