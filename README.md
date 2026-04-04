@@ -36,98 +36,83 @@ The workflow reflects how real SOC teams prioritise high-risk activity, reduce n
 
 ## 💼 Business Value
 
-This project demonstrates how effective log analysis can improve organisational security operations:
+This project demonstrates how effective log analysis improves security operations:
 
 - **Improved Threat Detection**  
-  Identifies brute-force attacks and suspicious behaviour early
+  Early identification of brute-force attacks and suspicious activity  
 
 - **Reduced Mean Time to Respond (MTTR)**  
-  Structured queries and dashboards enable faster investigation
+  Structured queries and dashboards enable faster investigation  
 
 - **Reduced Alert Fatigue**  
-  Detection logic filters noise and highlights meaningful threats
+  Detection logic filters noise and highlights meaningful threats  
 
 - **Centralised Visibility**  
-  Aggregates logs into a single platform for efficient monitoring
+  Consolidates logs into a single platform for efficient monitoring  
 
 - **Proactive Security Posture**  
-  Alerts allow teams to respond before incidents escalate
+  Alerts enable early response before incidents escalate  
 
 ---
 
-## 📂 Project Structure
+## 📂 Projects Included
 
-```
-soc-log-analysis/
-├── README.md
-├── ssh-brute-force-splunk/
-│   ├── README.md
-│   ├── screenshots/
-│   └── queries/
-```
-
-More projects will be added over time, including:
-
-* Web traffic (HTTP) analysis
-* DNS log analysis
+### 🔐 SSH Log Analysis
+- Detect brute-force login attempts  
+- Identify attacking IPs  
+- Detect automated tools (e.g. Nmap)  
+- Build dashboards and alerts  
 
 ---
 
-## 🔍 Current Project
+### 🌐 DNS Log Analysis
+- Detect suspicious domain activity (NXDOMAIN, long domains)  
+- Identify potential beaconing behaviour  
+- Analyse DNS query patterns  
+- Build detection logic and alerts  
 
-### SSH Brute Force Detection using Splunk
+---
 
-This project simulates a real-world brute-force attack investigation using SSH logs in Splunk.
-
-**Key components:**
-
-* Detection of high-volume failed login attempts
-* Identification of top attacking source IPs
-* Investigation of authentication outcomes (failure vs success)
-* Detection of automated tools (e.g. Nmap)
-* Dashboard visualisation for SOC monitoring
-* Alert implementation for real-time detection
+### 🌍 HTTP Log Analysis *(coming next)*
+- Detect web-based attacks (scanning, anomalies)  
+- Analyse traffic behaviour and anomalies  
+- Identify suspicious endpoints and requests  
 
 ---
 
 ## 🛠️ Tools & Technologies
 
-* Splunk Enterprise
-* SPL (Search Processing Language)
-* Regular Expressions (regex)
-* GitHub
+- Splunk Enterprise  
+- SPL (Search Processing Language)  
+- Regular Expressions (regex)  
+- GitHub  
 
 ---
 
 ## 🧩 Skills Demonstrated
 
-* Log analysis and interpretation
-* Detection engineering fundamentals
-* Threat identification and behaviour analysis
-* Data visualisation (dashboards)
-* Basic alert configuration
-* Security-focused problem solving
-
----
-
-## 🚨 Example Use Cases
-
-* Detecting brute-force authentication attempts
-* Identifying suspicious source IP behaviour
-* Recognising automated scanning tools (e.g. Nmap)
-* Monitoring authentication trends
-* Creating alerts for abnormal activity
+- Log analysis and interpretation  
+- Detection engineering fundamentals  
+- Threat behaviour analysis  
+- Dashboard visualisation  
+- Alert configuration  
+- Security-focused problem solving  
 
 ---
 
 ## 🎯 Why This Matters
 
-In real-world environments, analysts cannot manually review every log entry.  
-Detection logic, dashboards, and alerts are essential to identify threats efficiently and prioritise investigations.
+In real-world environments, analysts cannot manually review every log entry.
+
+This project demonstrates how detection logic, dashboards, and alerts are used to:
+
+- Prioritise critical threats  
+- Reduce investigation time  
+- Enable scalable and efficient monitoring  
 
 ---
 
 ## 📎 Notes
 
-This repository is built for learning and portfolio demonstration purposes.
-All datasets used are publicly available or simulated environments.
+This repository is built for learning and portfolio demonstration purposes.  
+All datasets are publicly available or simulated environments.
