@@ -185,7 +185,7 @@ This enables efficient filtering, aggregation, and threat detection within Splun
 
 ### 2. Sensitive Path Access
 
-![Sensitive Path](http-threat-detection-splunk/screenshots/2-sensitive-path-access.PNG)
+![Sensitive Path](screenshots/2-sensitive-path-access.PNG)
 
 Suspicious URI patterns were detected, including:
 
@@ -203,7 +203,7 @@ These indicate:
 
 ### 3. Scanner / Tool Detection
 
-![Scanner Detection](http-threat-detection-splunk/screenshots/3-scanner-or-tool-detection.PNG)
+![Scanner Detection](screenshots/3-scanner-or-tool-detection.PNG)
 
 Multiple requests were identified using HTTP methods such as:
 
@@ -219,7 +219,7 @@ High-frequency requests across multiple targets suggest:
 
 ### 4. HTTP Error Analysis
 
-![HTTP Errors](http-threat-detection-splunk/screenshots/4-http-error-analysis.PNG)
+![HTTP Errors](screenshots/4-http-error-analysis.PNG)
 
 Frequent HTTP error codes observed:
 
@@ -236,7 +236,7 @@ This indicates:
 
 ### 5. Repeated Scanning Behaviour
 
-![Scanning Behaviour](http-threat-detection-splunk/screenshots/5-repeated-scanning-behaviour.PNG)
+![Scanning Behaviour](screenshots/5-repeated-scanning-behaviour.PNG)
 
 Source IP:
 
@@ -254,7 +254,7 @@ This pattern strongly indicates:
 
 ### 6. Top Targeted Hosts
 
-![Top Targets](http-threat-detection-splunk/screenshots/6-top-targeted-hosts.PNG)
+![Top Targets](screenshots/6-top-targeted-hosts.PNG)
 
 Most targeted systems include:
 
@@ -271,7 +271,7 @@ This suggests:
 
 ### 7. Top Attacking Source IPs
 
-![Top Attackers](http-threat-detection-splunk/screenshots/7-top-attacking-source-ips.PNG)
+![Top Attackers](screenshots/7-top-attacking-source-ips.PNG)
 
 Top attacking sources:
 
@@ -287,7 +287,7 @@ These IPs generated the highest number of requests, indicating:
 
 ### 8. Detection Rule (Alert Query)
 
-![Alert Query](http-threat-detection-splunk/screenshots/8-alert-query.PNG)
+![Alert Query](screenshots/8-alert-query.PNG)
 
 Detection logic:
 
@@ -301,7 +301,7 @@ This helps identify abnormal request spikes.
 
 ### 9. Alert Configuration
 
-![Alert Config](http-threat-detection-splunk/screenshots/9-alert-config.PNG)
+![Alert Config](screenshots/9-alert-config.PNG)
 
 Configuration:
 
@@ -316,7 +316,7 @@ This enables continuous monitoring for scanning behaviour.
 
 ### 10. Dashboard
 
-![Dashboard](http-threat-detection-splunk/screenshots/10-dashboard.PNG)
+![Dashboard](screenshots/10-dashboard.PNG)
 
 The dashboard provides a consolidated view of:
 
