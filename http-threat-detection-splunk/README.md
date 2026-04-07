@@ -1,21 +1,11 @@
-📊 HTTP Threat Detection using Splunk
+🌐 HTTP Threat Detection using Splunk
 
-📌 Project Overview
-
-This project focuses on analysing HTTP logs using Splunk to identify suspicious activities such as:
-	•	Web scanning and enumeration
-	•	Access to sensitive paths
-	•	Automated tool usage (e.g., Nmap, DirBuster)
-	•	Abnormal request patterns
-	•	High-frequency scanning behaviour
-
-The objective is to simulate a SOC analyst workflow, from raw log parsing to detection engineering, alerting, and dashboard visualisation.
+This project demonstrates how HTTP web traffic logs can be analysed using Splunk SIEM to detect web-based attacks, identify suspicious behaviour, and simulate real-world SOC (Security Operations Centre) workflows.
 
 ⸻
 
-🧱 1. Field Extraction
+🧠 Project Overview
 
-🎯 Objective
+HTTP logs contain valuable information about web requests, including source IPs, requested URIs, response codes, and request methods. Analysing these logs allows security analysts to detect reconnaissance activity, automated scanning, and potential exploitation attempts.
 
-Convert raw HTTP logs into structured fields for analysis.
-
+In this project, raw HTTP logs were ingested into Splunk, parsed using regular expressions, and analysed to uncover suspicious web activity patterns.
