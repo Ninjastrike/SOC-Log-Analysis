@@ -26,6 +26,19 @@ Full credit to **Rajneesh Gupta (0xrajneesh)** for providing structured learning
 
 ---
 
+🎯 Objectives
+
+- Extract structured fields from raw HTTP logs
+- Detect access to sensitive or restricted paths
+-	Identify automated scanning tools (e.g. Nmap, DirBuster)
+-	Analyse HTTP error patterns (403, 404, 500)
+-	Detect repeated scanning behaviour
+-	Identify top attacking source IPs and targeted hosts
+-	Build a dashboard for monitoring
+-	Implement alerting for abnormal activity
+
+---
+
 
 
 [1]: https://github.com/0xrajneesh/Splunk-Projects-For-Beginners/blob/main/project%233-analyzing-http-logs-using-splunk-siem.md "project#3-analyzing-http-logs-using-splunk-siem.md"
