@@ -1,1 +1,125 @@
+==============================
+HTTP THREAT DETECTION ANALYSIS QUERIES
+==============================
 
+[1] Field Extraction (Base Query)
+--------------------------------
+index=main
+| rex field=_raw "^(?<ts>\S+)\s+(?<uid>\S+)\s+(?<src_ip>\S+)\s+(?<src_port>\S+)\s+(?<dest_ip>\S+)\s+(?<dest_port>\S+)\s+(?<trans_depth>\S+)\s+(?<method>\S+)\s+(?<host>\S+)\s+(?<uri>\S+)"
+| eval readable_time=strftime(ts,"%Y-%m-%d %H:%M:%S")
+| table readable_time src_ip dest_ip method host uri
+
+
+[2] Sensitive Path Access
+-------------------------
+index=main
+| rex field=_raw "^(?<ts>\S+)\s+(?<uid>\S+)\s+(?<src_ip>\S+)\s+(?<src_port>\S+)\s+(?<dest_ip>\S+)\s+(?<dest_port>\S+)\s+(?<trans_depth>\S+)\s+(?<method>\S+)\s+(?<host>\S+)\s+(?<uri>\S+)"
+| search uri="*etc/passwd*" OR uri="*boot.ini*" OR uri="*.git*" OR uri="*.svn*" OR uri="*_vti_*" OR uri="*manager/html*" OR uri="*host-manager*" OR uri="*axis2-admin*"
+| stats count by src_ip dest_ip uri
+| sort - count
+
+
+[3] Scanner / Tool Detection
+----------------------------
+index=main
+| search "Nmap Scripting Engine" OR "DirBuster" OR "Nikto" OR "sqlmap"
+| rex field=_raw "^(?<ts>\S+)\s+(?<uid>\S+)\s+(?<src_ip>\S+)\s+(?<src_port>\S+)\s+(?<dest_ip>\S+)\s+(?<dest_port>\S+)\s+(?<trans_depth>\S+)\s+(?<method>\S+)\s+(?<host>\S+)\s+(?<uri>\S+)"
+| stats count by src_ip dest_ip method uri
+| sort - count
+
+
+[4] HTTP Error Analysis
+-----------------------
+index=main
+| rex field=_raw "^(?<ts>\S+)\s+(?<uid>\S+)\s+(?<src_ip>\S+)\s+(?<src_port>\S+)\s+(?<dest_ip>\S+)\s+(?<dest_port>\S+)\s+(?<trans_depth>\S+)\s+(?<method>\S+)\s+(?<host>\S+)\s+(?<uri>\S+)\s+(?<referrer>\S+)\s+(?<user_agent>.+?)\s+(?<req_len>\S+)\s+(?<resp_len>\S+)\s+(?<status_code>\d{3})"
+| where status_code IN (403,404,500)
+| stats count by src_ip uri status_code
+| sort - count
+| head 20
+
+
+[5] Repeated Scanning Behaviour
+-------------------------------
+index=main
+| rex field=_raw "^(?<ts>\S+)\s+(?<uid>\S+)\s+(?<src_ip>\S+)\s+(?<src_port>\S+)\s+(?<dest_ip>\S+)\s+(?<dest_port>\S+)\s+(?<trans_depth>\S+)\s+(?<method>\S+)\s+(?<host>\S+)\s+(?<uri>\S+)"
+| eval _time=ts
+| bin _time span=1m
+| stats count by src_ip dest_ip _time
+| where count > 20
+| sort - count
+
+
+[6] Top Targeted Hosts
+----------------------
+index=main
+| rex field=_raw "^(?<ts>\S+)\s+(?<uid>\S+)\s+(?<src_ip>\S+)\s+(?<src_port>\S+)\s+(?<dest_ip>\S+)\s+(?<dest_port>\S+)\s+(?<trans_depth>\S+)\s+(?<method>\S+)\s+(?<host>\S+)\s+(?<uri>\S+)"
+| stats count by dest_ip
+| sort - count
+
+
+[7] Top Attacking Source IPs
+----------------------------
+index=main
+| rex field=_raw "^(?<ts>\S+)\s+(?<uid>\S+)\s+(?<src_ip>\S+)\s+(?<src_port>\S+)\s+(?<dest_ip>\S+)\s+(?<dest_port>\S+)\s+(?<trans_depth>\S+)\s+(?<method>\S+)\s+(?<host>\S+)\s+(?<uri>\S+)"
+| stats count by src_ip
+| sort - count
+
+
+==============================
+DASHBOARD QUERIES
+==============================
+
+[Dashboard 1] Sensitive Path Access
+-----------------------------------
+index=main
+| rex field=_raw "^(?<ts>\S+)\s+(?<uid>\S+)\s+(?<src_ip>\S+)\s+(?<src_port>\S+)\s+(?<dest_ip>\S+)\s+(?<dest_port>\S+)\s+(?<trans_depth>\S+)\s+(?<method>\S+)\s+(?<host>\S+)\s+(?<uri>\S+)"
+| search uri="*etc/passwd*" OR uri="*boot.ini*" OR uri="*.git*" OR uri="*.svn*" OR uri="*_vti_*" OR uri="*manager/html*" OR uri="*host-manager*" OR uri="*axis2-admin*"
+| stats count by src_ip dest_ip uri
+| sort - count
+| head 10
+
+
+[Dashboard 2] Scanner / Tool Detection
+--------------------------------------
+index=main
+| search "Nmap Scripting Engine" OR "DirBuster" OR "Nikto" OR "sqlmap"
+| rex field=_raw "^(?<ts>\S+)\s+(?<uid>\S+)\s+(?<src_ip>\S+)\s+(?<src_port>\S+)\s+(?<dest_ip>\S+)\s+(?<dest_port>\S+)\s+(?<trans_depth>\S+)\s+(?<method>\S+)\s+(?<host>\S+)\s+(?<uri>\S+)"
+| stats count by src_ip dest_ip method uri
+| sort - count
+| head 10
+
+
+[Dashboard 3] Repeated Scanning Behaviour
+-----------------------------------------
+index=main
+| rex field=_raw "^(?<ts>\S+)\s+(?<uid>\S+)\s+(?<src_ip>\S+)\s+(?<src_port>\S+)\s+(?<dest_ip>\S+)\s+(?<dest_port>\S+)\s+(?<trans_depth>\S+)\s+(?<method>\S+)\s+(?<host>\S+)\s+(?<uri>\S+)"
+| eval _time=ts
+| bin _time span=1m
+| stats count by src_ip dest_ip _time
+| where count > 20
+| sort - count
+| head 10
+
+
+[Dashboard 4] Top Targeted Hosts
+--------------------------------
+index=main
+| rex field=_raw "^(?<ts>\S+)\s+(?<uid>\S+)\s+(?<src_ip>\S+)\s+(?<src_port>\S+)\s+(?<dest_ip>\S+)\s+(?<dest_port>\S+)\s+(?<trans_depth>\S+)\s+(?<method>\S+)\s+(?<host>\S+)\s+(?<uri>\S+)"
+| stats count by dest_ip
+| sort - count
+| head 10
+
+
+==============================
+ALERT QUERY
+==============================
+
+[Alert] Potential HTTP Scanning Activity
+----------------------------------------
+index=main
+| rex field=_raw "^(?<ts>\S+)\s+(?<uid>\S+)\s+(?<src_ip>\S+)\s+(?<src_port>\S+)\s+(?<dest_ip>\S+)\s+(?<dest_port>\S+)\s+(?<trans_depth>\S+)\s+(?<method>\S+)\s+(?<host>\S+)\s+(?<uri>\S+)"
+| eval _time=ts
+| bin _time span=1m
+| stats count by src_ip dest_ip _time
+| where count > 20
+| sort - count
