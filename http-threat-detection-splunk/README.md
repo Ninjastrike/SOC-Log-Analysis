@@ -161,7 +161,7 @@ This section follows a typical SOC workflow: Detection → Investigation → Val
 
 ### 1. Field Extraction
 
-![Field Extraction](http-threat-detection-splunk/screenshots/1-field-extraction.PNG)
+![Field Extraction](screenshots/1-field-extraction.PNG)
 
 Raw HTTP logs were parsed into structured fields such as:
 
