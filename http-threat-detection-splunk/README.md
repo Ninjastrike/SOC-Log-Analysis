@@ -19,8 +19,6 @@ In this project, raw HTTP logs were ingested into Splunk, parsed using regular e
 
 ## 📂 Dataset
 
-## 📂 Dataset
-
 The dataset used in this project was adapted from:
 
 * [Splunk SSH Log Analysis Project by 0xrajneesh](https://github.com/0xrajneesh/Splunk-Projects-For-Beginners/blob/main/project%233-analyzing-http-logs-using-splunk-siem.md)
@@ -44,17 +42,9 @@ Full credit to **Rajneesh Gupta (0xrajneesh)** for providing structured learning
 
 ## 🔍 Log Analysis Workflow
 
-This section outlines the technical steps used to process and analyse HTTP logs.
-
----
-
 ### 1. Log Ingestion
 
-HTTP logs were uploaded into Splunk using the **Add Data** feature and indexed under:
-
-```spl
-index=main
-```
+HTTP logs were uploaded into Splunk using the Add Data feature.
 
 ---
 
@@ -69,19 +59,30 @@ This reflects real-world SOC workflows where analysts frequently parse logs dyna
 #### 🔍 Regex Extraction Query
 
 ```spl
-index=main
 | rex field=_raw "^(?<ts>\S+)\s+(?<uid>\S+)\s+(?<src_ip>\S+)\s+(?<src_port>\S+)\s+(?<dest_ip>\S+)\s+(?<dest_port>\S+)\s+(?<trans_depth>\S+)\s+(?<method>\S+)\s+(?<host>\S+)\s+(?<uri>\S+)"
-| eval readable_time=strftime(ts, "%Y-%m-%d %H:%M:%S")
-| table readable_time src_ip dest_ip method host uri
 ```
+
+This extracts structured fields such as:
+
+- `ts` (timestamp)  
+- `src_ip` (source IP)  
+- `dest_ip` (destination DNS server)  
+- `method` (HTTP method)  
+- `uri` (requested resource)  
+
+#### Regex Explanation
+
+- `\S+` matches non-whitespace values (each column)  
+- `\s+` matches spaces between fields  
+- `(?<field_name>...)` creates named fields in Splunk  
+
+This enables efficient filtering, aggregation, and detection using SPL queries.
 
 ---
 
 ### 3. Detection: Sensitive Path Access
 
 ```spl
-index=main
-| rex field=_raw "^(?<ts>\S+)\s+(?<uid>\S+)\s+(?<src_ip>\S+)\s+(?<src_port>\S+)\s+(?<dest_ip>\S+)\s+(?<dest_port>\S+)\s+(?<trans_depth>\S+)\s+(?<method>\S+)\s+(?<host>\S+)\s+(?<uri>\S+)"
 | search uri="*etc/passwd*" OR uri="*boot.ini*" OR uri="*.git*" OR uri="*.svn*" OR uri="*_vti_*" OR uri="*manager/html*" OR uri="*host-manager*" OR uri="*axis2-admin*"
 | stats count by src_ip dest_ip uri
 | sort - count
@@ -94,9 +95,7 @@ Detects attempts to access sensitive files and administrative endpoints.
 ### 4. Detection: Scanner / Tool Activity
 
 ```spl
-index=main
 | search "Nmap Scripting Engine" OR "DirBuster" OR "Nikto" OR "sqlmap"
-| rex field=_raw "^(?<ts>\S+)\s+(?<uid>\S+)\s+(?<src_ip>\S+)\s+(?<src_port>\S+)\s+(?<dest_ip>\S+)\s+(?<dest_port>\S+)\s+(?<trans_depth>\S+)\s+(?<method>\S+)\s+(?<host>\S+)\s+(?<uri>\S+)"
 | stats count by src_ip dest_ip method uri
 | sort - count
 ```
@@ -108,8 +107,6 @@ Identifies automated scanning tools based on behaviour and signatures.
 ### 5. Detection: HTTP Error Analysis
 
 ```spl
-index=main
-| rex field=_raw "^(?<ts>\S+)\s+(?<uid>\S+)\s+(?<src_ip>\S+)\s+(?<src_port>\S+)\s+(?<dest_ip>\S+)\s+(?<dest_port>\S+)\s+(?<trans_depth>\S+)\s+(?<method>\S+)\s+(?<host>\S+)\s+(?<uri>\S+)\s+(?<referrer>\S+)\s+(?<user_agent>.+?)\s+(?<req_len>\S+)\s+(?<resp_len>\S+)\s+(?<status_code>\d{3})"
 | where status_code IN (403,404,500)
 | stats count by src_ip uri status_code
 | sort - count
@@ -123,8 +120,6 @@ Highlights enumeration activity through HTTP error patterns.
 ### 6. Detection: Repeated Scanning Behaviour
 
 ```spl
-index=main
-| rex field=_raw "^(?<ts>\S+)\s+(?<uid>\S+)\s+(?<src_ip>\S+)\s+(?<src_port>\S+)\s+(?<dest_ip>\S+)\s+(?<dest_port>\S+)\s+(?<trans_depth>\S+)\s+(?<method>\S+)\s+(?<host>\S+)\s+(?<uri>\S+)"
 | eval _time=ts
 | bin _time span=1m
 | stats count by src_ip dest_ip _time
@@ -139,8 +134,6 @@ Detects high-frequency request patterns typical of automated attacks.
 ### 7. Detection: Top Targeted Hosts
 
 ```spl
-index=main
-| rex field=_raw "^(?<ts>\S+)\s+(?<uid>\S+)\s+(?<src_ip>\S+)\s+(?<src_port>\S+)\s+(?<dest_ip>\S+)\s+(?<dest_port>\S+)\s+(?<trans_depth>\S+)\s+(?<method>\S+)\s+(?<host>\S+)\s+(?<uri>\S+)"
 | stats count by dest_ip
 | sort - count
 ```
@@ -152,8 +145,6 @@ Identifies the most targeted systems.
 ### 8. Detection: Top Attacking Source IPs
 
 ```spl
-index=main
-| rex field=_raw "^(?<ts>\S+)\s+(?<uid>\S+)\s+(?<src_ip>\S+)\s+(?<src_port>\S+)\s+(?<dest_ip>\S+)\s+(?<dest_port>\S+)\s+(?<trans_depth>\S+)\s+(?<method>\S+)\s+(?<host>\S+)\s+(?<uri>\S+)"
 | stats count by src_ip
 | sort - count
 ```
