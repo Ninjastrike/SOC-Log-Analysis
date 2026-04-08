@@ -8,6 +8,8 @@ DNS (Domain Name System) logs provide visibility into how systems resolve domain
 
 ## 🔍 Log Analysis Workflow
 
+This section outlines the technical steps used to process and analyse the DNS logs.
+
 ### 1. Log Ingestion
 
 DNS logs were uploaded into Splunk using the Add Data feature.
