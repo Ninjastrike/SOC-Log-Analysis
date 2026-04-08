@@ -22,17 +22,6 @@ Full credit to **Rajneesh Gupta (0xrajneesh)** for providing structured learning
 
 ---
 
-## 🎯 Objectives
-
-* Detect high-volume failed SSH login attempts
-* Identify top attacking source IP addresses
-* Analyse authentication outcomes (failure vs success)
-* Detect automated scanning tools (e.g. Nmap)
-* Build a dashboard for visual monitoring
-* Implement an alert for brute-force detection
-
----
-
 ## 🔍 Log Analysis Workflow
 
 This section outlines the technical steps used to process and analyse the SSH logs.
