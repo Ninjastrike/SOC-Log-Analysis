@@ -87,7 +87,7 @@ The dataset used in this project was adapted from:
 * [Splunk DNS Log Analysis Project by 0xrajneesh](https://github.com/0xrajneesh/Splunk-Projects-For-Beginners/blob/main/Project%231-analyzing-dns-log-using%20splunk-siem.md)
 * [Splunk HTTP Log Analysis Project by 0xrajneesh](https://github.com/0xrajneesh/Splunk-Projects-For-Beginners/blob/main/project%233-analyzing-http-logs-using-splunk-siem.md)
 
-Full credit to **Rajneesh Gupta (0xrajneesh)** for providing structured learning resources and sample datasets for Splunk log analysis projects. (https://github.com/0xrajneesh/Splunk-Projects-For-Beginners)
+Full credit to **Rajneesh Gupta (0xrajneesh)** for providing structured learning resources and sample datasets for Splunk log analysis projects. [Splunk Projects For Beginners](https://github.com/0xrajneesh/Splunk-Projects-For-Beginners)
 
 ---
 
