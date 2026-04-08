@@ -6,9 +6,17 @@ This project demonstrates how SSH authentication logs can be analysed using Splu
 
 ## 🧠 Project Overview
 
-SSH (Secure Shell) logs contain critical information about remote access attempts, including authentication successes and failures, as well as connection details. Analysing these logs allows security analysts to detect unauthorised access attempts and potential brute-force attacks. 
+SSH (Secure Shell) logs capture authentication attempts and connection details. Analysing these logs enables detection of unauthorised access attempts and brute-force activity.
 
-In this project, raw SSH logs were ingested into Splunk, parsed with regular expressions, and analysed to uncover suspicious activity patterns.
+In this project, raw SSH logs were ingested into Splunk, parsed using regex, and analysed to identify suspicious behaviour patterns.
+
+---
+
+## 🎯 Why This Matters
+
+Brute-force attacks are a common method used by attackers to gain unauthorised access to systems. Detecting these attempts early helps prevent credential compromise and lateral movement within a network.
+
+This project demonstrates how SOC analysts can identify and investigate such activity efficiently using SIEM tools.
 
 ---
 
@@ -49,7 +57,7 @@ The SSH dataset used in this project is unstructured and does not contain predef
 
 To address this, fields were extracted at search time using regular expressions (`rex`).
 
-This reflects real-world SOC workflows, where analysts often work with unstructured logs and perform on-the-fly field extraction for investigation and threat detection.
+This enables efficient filtering, aggregation, and detection using SPL queries.
 
 #### 🔍 Regex Extraction Query
 
@@ -220,9 +228,9 @@ This improves monitoring and incident response efficiency.
 
 ## 📝 Incident Summary
 
-A source IP (192.168.202.141) generated over 2365 failed SSH login attempts targeting multiple systems. Analysis revealed no successful authentication and identified Nmap signatures, indicating automated reconnaissance and brute-force activity.
+A high-volume brute-force attack was identified from a single source IP, generating over 2000 failed login attempts with no successful authentication. Indicators suggest automated reconnaissance using Nmap.
 
-Detection logic and alerts were implemented to monitor similar behaviour and enable proactive response.
+The activity was flagged based on abnormal authentication patterns and high-frequency request behaviour.
 
 ---
 
@@ -297,10 +305,9 @@ The observed activity strongly indicates **automated brute-force and reconnaissa
 
 ## 🚀 Key Takeaways
 
-* Raw logs can be transformed into actionable security insights
-* Detection logic is essential for identifying abnormal behaviour
-* Visualisation improves situational awareness
-* Alerts enable proactive monitoring in SOC environments
+* Detection logic is essential for identifying abnormal behaviour  
+* Visualisation improves situational awareness  
+* Alerts enable proactive SOC monitoring
 
 [1]: https://github.com/0xrajneesh/Splunk-Projects-For-Beginners/blob/main/project%234-analyzing-ssh-logs-using-splunk-siem.md "project#4-analyzing-ssh-logs-using-splunk-siem.md"
 [2]: https://github.com/0xrajneesh/Splunk-Projects-For-Beginners "Splunk SIEM Log Analysis Projects"
