@@ -30,17 +30,17 @@ This reflects real-world SOC workflows where analysts frequently parse logs dyna
 
 This extracts structured fields such as:
 
-- `ts` (timestamp)  
-- `src_ip` (source IP)  
-- `dest_ip` (destination DNS server)  
-- `method` (HTTP method)  
-- `uri` (requested resource)  
+* `ts` (timestamp)  
+* `src_ip` (source IP)  
+* `dest_ip` (destination DNS server)  
+* `method` (HTTP method)  
+* `uri` (requested resource)  
 
 #### Regex Explanation
 
-- `\S+` matches non-whitespace values (each column)  
-- `\s+` matches spaces between fields  
-- `(?<field_name>...)` creates named fields in Splunk  
+* `\S+` matches non-whitespace values (each column)  
+* `\s+` matches spaces between fields  
+* `(?<field_name>...)` creates named fields in Splunk  
 
 This enables efficient filtering, aggregation, and detection using SPL queries.
 
@@ -131,10 +131,10 @@ This section follows a typical SOC workflow: Detection → Investigation → Val
 
 Raw HTTP logs were parsed into structured fields such as:
 
-- src_ip  
-- dest_ip  
-- method  
-- uri  
+* src_ip  
+* dest_ip  
+* method  
+* uri  
 
 This enables efficient filtering, aggregation, and threat detection within Splunk.
 
@@ -146,15 +146,15 @@ This enables efficient filtering, aggregation, and threat detection within Splun
 
 Suspicious URI patterns were detected, including:
 
-- `/manager/html`  
-- `/host-manager/html`  
-- `/etc/passwd`  
+* `/manager/html`  
+* `/host-manager/html`  
+* `/etc/passwd`  
 
 These indicate:
 
-- Directory traversal attempts  
-- Attempts to access admin panels  
-- Potential reconnaissance activity  
+* Directory traversal attempts  
+* Attempts to access admin panels  
+* Potential reconnaissance activity  
 
 Attempts to access `/etc/passwd` indicate potential directory traversal attacks aimed at retrieving sensitive system files.
 
@@ -168,13 +168,13 @@ User-agent strings indicate the use of automated tools such as DirBuster and Nma
 
 Multiple requests were identified using HTTP methods such as:
 
-- OPTIONS  
-- GET  
+* OPTIONS  
+* GET  
 
 High-frequency requests across multiple targets suggest:
 
-- Automated scanning tools  
-- Enumeration activity  
+* Automated scanning tools  
+* Enumeration activity  
 
 ---
 
@@ -184,14 +184,14 @@ High-frequency requests across multiple targets suggest:
 
 Frequent HTTP error codes observed:
 
-- 404 (Not Found)  
-- 403 (Forbidden)  
+* 404 (Not Found)  
+* 403 (Forbidden)  
 
 This indicates:
 
-- Resource probing  
-- Directory enumeration  
-- Attempted access to non-existent or restricted files  
+* Resource probing  
+* Directory enumeration  
+* Attempted access to non-existent or restricted files  
 
 ---
 
@@ -207,9 +207,9 @@ generated a high volume of requests within short time intervals.
 
 This pattern strongly indicates:
 
-- Automated scanning  
-- Script-based enumeration  
-- Non-human behaviour  
+* Automated scanning  
+* Script-based enumeration  
+* Non-human behaviour  
 
 This behaviour is considered high risk due to its association with pre-exploitation reconnaissance.
 
@@ -221,14 +221,14 @@ This behaviour is considered high risk due to its association with pre-exploitat
 
 Most targeted systems include:
 
-- 192.168.23.202  
-- 192.168.26.202  
-- 192.168.24.202  
+* 192.168.23.202  
+* 192.168.26.202  
+* 192.168.24.202  
 
 This suggests:
 
-- Focused targeting rather than random scanning  
-- Potential high-value systems being probed  
+* Focused targeting rather than random scanning  
+* Potential high-value systems being probed  
 
 ---
 
@@ -238,13 +238,13 @@ This suggests:
 
 Top attacking sources:
 
-- **192.168.202.102**  
-- **192.168.202.110**  
+* **192.168.202.102**  
+* **192.168.202.110**  
 
 These IPs generated the highest number of requests, indicating:
 
-- Primary scanning sources  
-- Potential compromised or attacker-controlled systems  
+* Primary scanning sources  
+* Potential compromised or attacker-controlled systems  
 
 ---
 
@@ -254,9 +254,9 @@ These IPs generated the highest number of requests, indicating:
 
 Detection logic:
 
-- Group events into 1-minute windows  
-- Count requests per source and destination  
-- Trigger when threshold exceeds **20 requests**  
+* Group events into 1-minute windows  
+* Count requests per source and destination  
+* Trigger when threshold exceeds **20 requests**  
 
 This helps identify abnormal request spikes.
 
@@ -268,10 +268,10 @@ This helps identify abnormal request spikes.
 
 Configuration:
 
-- Schedule: Every 5 minutes  
-- Time range: Last 24 hours  
-- Trigger: Results > 0  
-- Severity: Medium  
+* Schedule: Every 5 minutes  
+* Time range: Last 24 hours  
+* Trigger: Results > 0  
+* Severity: Medium  
 
 This enables continuous monitoring for scanning behaviour.
 
@@ -283,10 +283,10 @@ This enables continuous monitoring for scanning behaviour.
 
 The dashboard provides a consolidated view of:
 
-- Sensitive path access  
-- Scanner/tool activity  
-- Repeated scanning behaviour  
-- Top attackers and targets  
+* Sensitive path access  
+* Scanner/tool activity  
+* Repeated scanning behaviour  
+* Top attackers and targets  
 
 This improves situational awareness and supports faster incident response.
 
@@ -321,10 +321,9 @@ This project demonstrates how SOC analysts can analyse HTTP logs to identify sus
 
 ## ⚠️ Challenges & Limitations
 
-- Unstructured logs requiring regex extraction  
-- No ground truth for confirmed compromise  
-- High data volume requiring filtering  
-- Detection based on behaviour, not confirmation  
+* Analysis based on partial dataset may not capture full attack scope  
+* Detection relies on known patterns and may miss novel techniques  
+* Additional correlation with other logs is required for confirmation
 
 ---
 
