@@ -37,22 +37,28 @@ The workflow reflects how real SOC teams prioritise high-risk activity, reduce n
 
 ## 💼 Business Value
 
-This project demonstrates how effective log analysis improves security operations:
+This project demonstrates how effective log analysis supports real-world Security Operations Centre (SOC) objectives and improves organisational security posture.
 
 - **Improved Threat Detection**  
-  Early identification of brute-force attacks and suspicious activity  
+  Identifies brute-force attacks, scanning activity, and anomalous behaviour early using structured detection logic.
+
+- **Reduced Mean Time to Detect (MTTD)**  
+  Aggregated queries and dashboards enable faster identification of suspicious patterns across large volumes of logs.
 
 - **Reduced Mean Time to Respond (MTTR)**  
-  Structured queries and dashboards enable faster investigation  
+  Clear visualisations and focused queries allow analysts to investigate incidents efficiently and prioritise high-risk activity.
 
 - **Reduced Alert Fatigue**  
-  Detection logic filters noise and highlights meaningful threats  
+  Detection rules filter noisy data and highlight meaningful threats, improving signal-to-noise ratio for SOC analysts.
 
 - **Centralised Visibility**  
-  Consolidates logs into a single platform for efficient monitoring  
+  Multiple log sources (SSH, DNS, HTTP) are analysed within a single platform, providing a unified view of network activity.
 
-- **Proactive Security Posture**  
-  Alerts enable early response before incidents escalate  
+- **Proactive Security Monitoring**  
+  Alerts simulate real-time detection workflows, enabling early response before threats escalate into incidents.
+
+- **Real-World SOC Workflow Alignment**  
+  Demonstrates end-to-end processes including ingestion, parsing, detection, investigation, and alerting.
 
 ---
 
