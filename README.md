@@ -1,6 +1,7 @@
 # SOC Log Analysis
 
-A collection of hands-on Security Operations Centre (SOC) log analysis projects using Splunk, demonstrating real-world detection, investigation, and alerting workflows across multiple log sources.
+A practical SOC portfolio demonstrating how raw logs are transformed into actionable security insights using Splunk SIEM.
+Focused on real-world detection, investigation, and alerting workflows across SSH, DNS, and HTTP log sources.
 
 ---
 
@@ -55,28 +56,13 @@ This project demonstrates how effective log analysis improves security operation
 
 ---
 
-## 📂 Projects Included
+## 📊 Project Overview
 
-### 🔐 SSH Log Analysis
-- Detect brute-force login attempts  
-- Identify attacking IPs  
-- Detect automated tools (e.g. Nmap)  
-- Build dashboards and alerts  
-
----
-
-### 🌐 DNS Log Analysis
-- Detect suspicious domain activity (NXDOMAIN, long domains)  
-- Identify potential beaconing behaviour  
-- Analyse DNS query patterns  
-- Build detection logic and alerts  
-
----
-
-### 🌍 HTTP Log Analysis *(coming next)*
-- Detect web-based attacks (scanning, anomalies)  
-- Analyse traffic behaviour and anomalies  
-- Identify suspicious endpoints and requests  
+| Project | Focus Area | Key Detection |
+|--------|------------|--------------|
+| SSH Brute Force | Authentication logs | Brute-force attacks, Nmap scanning |
+| DNS Threat Detection | DNS logs | NXDOMAIN anomalies, beaconing |
+| HTTP Threat Detection | Web traffic logs | Directory traversal, scanning tools |
 
 ---
 
