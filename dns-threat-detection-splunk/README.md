@@ -12,7 +12,7 @@ This section outlines the technical steps used to process and analyse the DNS lo
 
 ### 1. Log Ingestion
 
-DNS logs were uploaded into Splunk using the Add Data feature.
+DNS logs were uploaded into Splunk using the Add Data feature and indexed for analysis.
 
 ---
 
