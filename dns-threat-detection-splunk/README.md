@@ -299,7 +299,7 @@ This project demonstrates how SOC analysts can use DNS logs to uncover hidden ma
 
 * Use DNS security controls such as DNSSEC to prevent spoofing and ensure data integrity [Control D](https://controld.com/blog/dns-security-best-practices/)  
 
-* Apply anomaly-based detection techniques rather than relying solely on known indicators, as modern C2 frameworks can evade static detection methods [netskope.com](https://www.netskope.com/resources/white-papers/effective-c2-beaconing-detection-white-paper)  
+* Apply anomaly-based detection techniques rather than relying solely on known indicators, as modern C2 frameworks can evade static detection methods [Netskope](https://www.netskope.com/resources/white-papers/effective-c2-beaconing-detection-white-paper)  
 
 * Adopt a layered DNS defence strategy combining monitoring, filtering, and threat intelligence integration to detect and block malicious activity early [Seceon Inc](https://seceon.com/dns-security/)  
 
