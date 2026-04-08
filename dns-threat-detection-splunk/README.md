@@ -286,17 +286,6 @@ Suspicious domains were also observed, suggesting possible interaction with unkn
 
 ---
 
-## 🧩 Skills Demonstrated
-
-- DNS log analysis  
-- Regex extraction  
-- Threat detection  
-- SOC investigation workflow  
-- Dashboard creation  
-- Alert configuration  
-
----
-
 ## 🚀 Key Takeaways
 
 - DNS logs provide strong visibility into network behaviour  
