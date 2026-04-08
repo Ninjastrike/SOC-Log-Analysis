@@ -265,6 +265,41 @@ This project demonstrates how SOC analysts can use DNS logs to uncover hidden ma
 
 ---
 
+## 🧠 Analyst Notes
+
+* Repeated NXDOMAIN responses suggest attempts to resolve non-existent or dynamically generated domains, which is commonly observed in malware or command-and-control (C2) communication.
+
+* The presence of uncommon or suspicious domain names may indicate external infrastructure not typically used in normal business operations.
+
+* Beaconing behaviour, characterised by repeated queries from the same source at regular intervals, is consistent with automated communication rather than normal user activity.
+
+* DNS traffic is often used as a covert channel, making anomalies such as long domains or repeated failed queries important indicators of potential compromise.
+
+---
+
+## 🛡️ Response & Recommendations
+
+### Immediate Analyst Actions
+
+* Review DNS activity for affected source IPs to determine the scope and frequency of suspicious queries  
+* Cross-check suspicious domains against threat intelligence platforms (e.g. VirusTotal) to assess reputation  
+* Monitor for continued beaconing or repeated NXDOMAIN patterns across the network  
+
+### Detection & Control Improvements
+
+* Implement DNS filtering or sinkholing to block known malicious or suspicious domains ([cisa.gov](https://www.cisa.gov/news-events/news/securing-dns-protecting-your-organization))  
+* Enable logging and monitoring of DNS queries to improve visibility into network activity  
+* Use threat intelligence feeds to enrich DNS logs and improve detection accuracy ([akamai.com](https://www.akamai.com/blog/security/dns-security-best-practices))  
+* Configure alerts for repeated NXDOMAIN responses and abnormal query frequency  
+
+### Strategic Recommendations
+
+* Incorporate DNS monitoring into the overall security strategy, as it is a key channel for detecting hidden threats  
+* Correlate DNS activity with endpoint and network logs to improve detection confidence and reduce false positives  
+* Continuously refine detection logic based on normal DNS behaviour baselines  
+
+---
+
 ## 🚀 Key Takeaways
 
 * DNS logs provide strong visibility into network behaviour  
