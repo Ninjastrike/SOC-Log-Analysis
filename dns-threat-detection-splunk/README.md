@@ -19,7 +19,13 @@ In this project, raw DNS logs were ingested into Splunk, parsed using regular ex
 
 ## 🎯 Why This Matters
 
+DNS traffic is often overlooked but plays a critical role in detecting malicious activity. Attackers commonly use DNS for command-and-control (C2) communication, data exfiltration, and maintaining persistence.
+
 C2 (Command-and-Control) refers to attacker-controlled infrastructure used to communicate with compromised systems and issue commands.
+
+Detecting anomalies such as repeated NXDOMAIN responses, beaconing behaviour, and unusual domain patterns helps identify potential threats early.
+
+This project demonstrates how SOC analysts can use DNS logs to uncover hidden malicious activity and support proactive threat detection.
 
 ---
 
