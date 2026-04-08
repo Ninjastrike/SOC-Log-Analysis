@@ -64,6 +64,12 @@ This project demonstrates how effective log analysis improves security operation
 | DNS Threat Detection | DNS logs | NXDOMAIN anomalies, beaconing |
 | HTTP Threat Detection | Web traffic logs | Directory traversal, scanning tools |
 
+Explore each project for detailed analysis and findings:
+
+- [SSH Brute Force Detection](ssh-brute-force-splunk/)
+- [DNS Threat Detection](dns-threat-detection-splunk/)
+- [HTTP Threat Detection](http-threat-detection-splunk/)
+
 ---
 
 ## 🛠️ Tools & Technologies
