@@ -310,6 +310,3 @@ This project demonstrates how SOC analysts can use DNS logs to uncover hidden ma
 * DNS logs provide strong visibility into network behaviour  
 * Behaviour patterns are key indicators  
 * Detection enables proactive monitoring
-
-[1]: https://github.com/0xrajneesh/Splunk-Projects-For-Beginners/blob/main/Project%231-analyzing-dns-log-using%20splunk-siem.md "Project#1-analyzing-dns-log-using splunk-siem.md"
-[2]: https://github.com/0xrajneesh/Splunk-Projects-For-Beginners "Splunk SIEM Log Analysis Projects"
