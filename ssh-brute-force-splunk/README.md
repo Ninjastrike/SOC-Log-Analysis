@@ -12,14 +12,6 @@ In this project, raw SSH logs were ingested into Splunk, parsed using regex, and
 
 ---
 
-## 🎯 Why This Matters
-
-Brute-force attacks are commonly used to gain unauthorised access to systems. Detecting these attempts early helps prevent credential compromise, account takeover, and potential lateral movement within a network.
-
-This project demonstrates how SOC analysts can identify and investigate such activity efficiently using SIEM tools.
-
----
-
 ## 📂 Dataset
 
 The dataset used in this project was adapted from:
@@ -225,6 +217,14 @@ The dashboard provides a consolidated view of key indicators, enabling analysts 
 A high-volume brute-force attack was identified from a single source IP, generating over 2000 failed login attempts with no successful authentication. Indicators suggest automated reconnaissance using Nmap.
 
 The activity was detected using threshold-based detection logic and further validated through behavioural analysis.
+
+---
+
+## 🎯 Why This Matters
+
+Brute-force attacks are commonly used to gain unauthorised access to systems. Detecting these attempts early helps prevent credential compromise, account takeover, and potential lateral movement within a network.
+
+This project demonstrates how SOC analysts can identify and investigate such activity efficiently using SIEM tools.
 
 ---
 
