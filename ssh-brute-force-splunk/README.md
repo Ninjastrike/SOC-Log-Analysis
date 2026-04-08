@@ -295,17 +295,6 @@ The observed activity strongly indicates **automated brute-force and reconnaissa
 
 ---
 
-## 🧩 Skills Demonstrated
-
-* Log ingestion and parsing
-* Regex-based field extraction
-* Threat detection and analysis
-* SOC investigation workflow
-* Dashboard creation
-* Alert configuration
-
----
-
 ## 🚀 Key Takeaways
 
 * Raw logs can be transformed into actionable security insights
@@ -315,4 +304,3 @@ The observed activity strongly indicates **automated brute-force and reconnaissa
 
 [1]: https://github.com/0xrajneesh/Splunk-Projects-For-Beginners/blob/main/project%234-analyzing-ssh-logs-using-splunk-siem.md "project#4-analyzing-ssh-logs-using-splunk-siem.md"
 [2]: https://github.com/0xrajneesh/Splunk-Projects-For-Beginners "Splunk SIEM Log Analysis Projects"
-
