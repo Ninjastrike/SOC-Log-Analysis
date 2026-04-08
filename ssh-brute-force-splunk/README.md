@@ -276,14 +276,14 @@ Indicates automated reconnaissance using Nmap.
 
 ### Detection & Control Improvements
 
-- Implement automated blocking mechanisms (e.g. Fail2Ban) to block IPs exhibiting repeated failed login attempts  [oai_citation:0‡Frontegg](https://frontegg.com/blog/ssh-password-authentication-security-risks-and-top-5-alternatives)  
-- Enforce account lockout or rate-limiting controls to prevent excessive authentication attempts  [oai_citation:1‡OWASP Cheat Sheet Series](https://cheatsheetseries.owasp.org/cheatsheets/Authentication_Cheat_Sheet.html)  
-- Use SSH key-based authentication and disable password authentication to reduce brute-force attack risk  [oai_citation:2‡Encryption Consulting](https://www.encryptionconsulting.com/ssh-vulnerabilities-how-to-protect/)  
-- Limit authentication attempts and restrict access to authorised users only to reduce attack surface  [oai_citation:3‡Teleport](https://goteleport.com/blog/ssh-hardening-to-prevent-brute-force-attacks/)  
+- Implement automated blocking mechanisms (e.g. Fail2Ban) to block IPs exhibiting repeated failed login attempts [Frontegg](https://frontegg.com/blog/ssh-password-authentication-security-risks-and-top-5-alternatives)  
+- Enforce account lockout or rate-limiting controls to prevent excessive authentication attempts [OWASP Cheat Sheet Series](https://cheatsheetseries.owasp.org/cheatsheets/Authentication_Cheat_Sheet.html)  
+- Use SSH key-based authentication and disable password authentication to reduce brute-force attack risk [Encryption Consulting](https://www.encryptionconsulting.com/ssh-vulnerabilities-how-to-protect/)  
+- Limit authentication attempts and restrict access to authorised users only to reduce attack surface [Teleport](https://goteleport.com/blog/ssh-hardening-to-prevent-brute-force-attacks/)  
 
 ### Strategic Recommendations
 
-- Apply a layered defence approach combining detection, prevention, and access control mechanisms  [oai_citation:4‡StoneFly](https://stonefly.com/blog/brute-force-attacks-enterprise-detection-prevention/?utm_source=chatgpt.com)  
+- Apply a layered defence approach combining detection, prevention, and access control mechanisms [StoneFly](https://stonefly.com/blog/brute-force-attacks-enterprise-detection-prevention/?utm_source=chatgpt.com)  
 - Continuously monitor authentication behaviour and tune alert thresholds based on normal activity patterns  
 
 ---
