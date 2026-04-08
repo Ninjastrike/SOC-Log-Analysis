@@ -27,19 +27,6 @@ Full credit to **Rajneesh Gupta (0xrajneesh)** for providing structured learning
 
 ---
 
-## 🎯 Objectives
-
-- Extract structured fields from raw DNS logs  
-- Identify top queried domains  
-- Detect NXDOMAIN (failed DNS resolutions)  
-- Identify suspicious domains  
-- Detect long domain names  
-- Detect DNS beaconing behaviour  
-- Build dashboards  
-- Implement alerts  
-
----
-
 ## 🔍 Log Analysis Workflow
 
 ### 1. Log Ingestion
