@@ -361,6 +361,46 @@ This project demonstrates how SOC analysts can analyse HTTP logs to identify sus
 
 ---
 
+## 🧠 Analyst Notes
+
+* Requests to sensitive paths such as `/etc/passwd` and administrative endpoints indicate potential directory traversal and unauthorised access attempts.
+
+* User-agent strings associated with tools such as DirBuster and Nmap suggest automated scanning and enumeration activity rather than normal user behaviour.
+
+* High-frequency and repetitive HTTP requests are consistent with automated reconnaissance, often performed prior to exploitation.
+
+* Web-based attacks typically follow a staged approach (reconnaissance → exploitation), and early detection of scanning behaviour is critical to prevent further compromise.
+
+---
+
+## 🛡️ Response & Recommendations
+
+### Immediate Analyst Actions
+
+- Investigate source IPs generating suspicious requests and review related web activity  
+- Identify targeted endpoints and assess whether any sensitive resources were accessed  
+- Escalate persistent scanning or abnormal request behaviour for further investigation  
+
+### Detection & Control Improvements
+
+- Implement Web Application Firewall (WAF) rules to detect and block common attack patterns such as directory traversal and automated scanning ([owasp.org](https://owasp.org/www-project-web-security-testing-guide/))  
+
+- Monitor and alert on abnormal HTTP request patterns, including high-frequency requests and unusual URI access ([cloudflare.com](https://www.cloudflare.com/learning/ddos/glossary/http-flood/))  
+
+- Validate and sanitise user input to prevent directory traversal and injection-based attacks ([owasp.org](https://owasp.org/www-community/attacks/Path_Traversal))  
+
+- Restrict access to administrative endpoints and sensitive files to authorised users only ([cisa.gov](https://www.cisa.gov/news-events/news/understanding-and-mitigating-common-web-vulnerabilities))  
+
+### Strategic Recommendations
+
+- Adopt a layered web security approach combining WAF, input validation, and monitoring to reduce attack surface ([cisa.gov](https://www.cisa.gov/news-events/news/understanding-and-mitigating-common-web-vulnerabilities))  
+
+- Continuously analyse HTTP traffic patterns to detect reconnaissance behaviour early in the attack lifecycle  
+
+- Integrate HTTP log monitoring with other data sources (e.g. DNS, endpoint logs) to improve detection accuracy and context  
+
+---
+
 ## 🚀 Key Takeaways
 
 * HTTP logs reveal attacker behaviour clearly  
