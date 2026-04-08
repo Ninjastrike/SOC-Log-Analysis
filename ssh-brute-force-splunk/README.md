@@ -254,6 +254,40 @@ Indicates automated reconnaissance using Nmap.
 
 ---
 
+## 🧠 Analyst Notes
+
+- The high volume of failed authentication attempts within short time intervals is consistent with automated brute-force activity rather than legitimate user behaviour.
+
+- The presence of SSH client signatures such as Nmap indicates reconnaissance activity, suggesting the attacker is scanning for accessible services and weak credentials.
+
+- No successful authentication was observed, indicating the attack was unsuccessful; however, continued attempts increase the risk of eventual compromise if weak credentials exist.
+
+- Brute-force attacks are commonly automated and can persist over extended periods, requiring continuous monitoring and detection tuning.
+
+---
+
+## 🛡️ Response & Recommendations
+
+### Immediate Analyst Actions
+
+- Review authentication logs for the source IP and targeted systems to confirm attack scope  
+- Monitor for continued or distributed brute-force attempts from other IP addresses  
+- Escalate persistent high-frequency activity for further investigation  
+
+### Detection & Control Improvements
+
+- Implement automated blocking mechanisms (e.g. Fail2Ban) to block IPs exhibiting repeated failed login attempts  [oai_citation:0‡Frontegg](https://frontegg.com/blog/ssh-password-authentication-security-risks-and-top-5-alternatives)  
+- Enforce account lockout or rate-limiting controls to prevent excessive authentication attempts  [oai_citation:1‡OWASP Cheat Sheet Series](https://cheatsheetseries.owasp.org/cheatsheets/Authentication_Cheat_Sheet.html)  
+- Use SSH key-based authentication and disable password authentication to reduce brute-force attack risk  [oai_citation:2‡Encryption Consulting](https://www.encryptionconsulting.com/ssh-vulnerabilities-how-to-protect/)  
+- Limit authentication attempts and restrict access to authorised users only to reduce attack surface  [oai_citation:3‡Teleport](https://goteleport.com/blog/ssh-hardening-to-prevent-brute-force-attacks/)  
+
+### Strategic Recommendations
+
+- Apply a layered defence approach combining detection, prevention, and access control mechanisms  [oai_citation:4‡StoneFly](https://stonefly.com/blog/brute-force-attacks-enterprise-detection-prevention/?utm_source=chatgpt.com)  
+- Continuously monitor authentication behaviour and tune alert thresholds based on normal activity patterns  
+
+---
+
 ### 🔹 Conclusion
 
 The observed activity strongly indicates **automated brute-force and reconnaissance behaviour**, rather than legitimate user access.
