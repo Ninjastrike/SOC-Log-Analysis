@@ -267,13 +267,13 @@ This project demonstrates how SOC analysts can use DNS logs to uncover hidden ma
 
 ## 🧠 Analyst Notes
 
-* Repeated NXDOMAIN responses suggest attempts to resolve non-existent or dynamically generated domains, which is commonly observed in malware or command-and-control (C2) communication.
+* Repeated NXDOMAIN responses and uncommon domain patterns may indicate attempts to contact non-existent or malicious infrastructure.
 
-* The presence of uncommon or suspicious domain names may indicate external infrastructure not typically used in normal business operations.
+* DNS beaconing behaviour, characterised by periodic and consistent query intervals, is commonly associated with command-and-control (C2) communication used by malware to maintain persistence.
 
-* Beaconing behaviour, characterised by repeated queries from the same source at regular intervals, is consistent with automated communication rather than normal user activity.
+* DNS traffic is often overlooked but can act as a covert communication channel for attackers, including data exfiltration and remote command execution.
 
-* DNS traffic is often used as a covert channel, making anomalies such as long domains or repeated failed queries important indicators of potential compromise.
+* Suspicious domain patterns and query behaviour should be validated using external threat intelligence sources to determine reputation and risk level.
 
 ---
 
@@ -281,22 +281,27 @@ This project demonstrates how SOC analysts can use DNS logs to uncover hidden ma
 
 ### Immediate Analyst Actions
 
-* Review DNS activity for affected source IPs to determine the scope and frequency of suspicious queries  
-* Cross-check suspicious domains against threat intelligence platforms (e.g. VirusTotal) to assess reputation  
-* Monitor for continued beaconing or repeated NXDOMAIN patterns across the network  
+* Investigate source systems generating repeated NXDOMAIN or beaconing patterns  
+* Review related DNS queries and network activity to determine scope of potential compromise  
+* Escalate persistent or anomalous DNS behaviour for further threat analysis  
 
 ### Detection & Control Improvements
 
-* Implement DNS filtering or sinkholing to block known malicious or suspicious domains ([cisa.gov](https://www.cisa.gov/news-events/news/securing-dns-protecting-your-organization))  
-* Enable logging and monitoring of DNS queries to improve visibility into network activity  
-* Use threat intelligence feeds to enrich DNS logs and improve detection accuracy ([akamai.com](https://www.akamai.com/blog/security/dns-security-best-practices))  
-* Configure alerts for repeated NXDOMAIN responses and abnormal query frequency  
+* Enable continuous DNS logging and monitoring to detect anomalies such as spikes in NXDOMAIN responses and unusual query patterns [Control D](https://controld.com/blog/dns-security-best-practices/)  
+
+* Implement DNS filtering to block known malicious or suspicious domains before connections are established [Control D](https://controld.com/blog/dns-security-best-practices/)  
+
+* Restrict DNS traffic to authorised resolvers and monitor outbound DNS activity to detect potential beaconing or C2 communication [FIRST](https://www.first.org/global/sigs/dns/stakeholder-advice/detection/dns-beacons-c2-communication)  
+
+* Build detection logic for beaconing patterns, including periodic queries and consistent intervals [Hunt](https://hunt.io/glossary/c2-beaconing)  
 
 ### Strategic Recommendations
 
-* Incorporate DNS monitoring into the overall security strategy, as it is a key channel for detecting hidden threats  
-* Correlate DNS activity with endpoint and network logs to improve detection confidence and reduce false positives  
-* Continuously refine detection logic based on normal DNS behaviour baselines  
+* Use DNS security controls such as DNSSEC to prevent spoofing and ensure data integrity [Control D](https://controld.com/blog/dns-security-best-practices/)  
+
+* Apply anomaly-based detection techniques rather than relying solely on known indicators, as modern C2 frameworks can evade static detection methods [netskope.com](https://www.netskope.com/resources/white-papers/effective-c2-beaconing-detection-white-paper)  
+
+* Adopt a layered DNS defence strategy combining monitoring, filtering, and threat intelligence integration to detect and block malicious activity early [Seceon Inc](https://seceon.com/dns-security/)  
 
 ---
 
