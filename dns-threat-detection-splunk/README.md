@@ -101,7 +101,7 @@ This enables efficient filtering, aggregation, and detection using SPL queries.
 | sort - count
 ```
 
-Identifies high-frequency DNS queries to establish baseline behaviour and prioritise domains for further investigation.
+Identifies frequently queried domains to establish baseline DNS behaviour and detect anomalies.
 
 ---
 
@@ -113,7 +113,7 @@ Identifies high-frequency DNS queries to establish baseline behaviour and priori
 | sort - count
 ```
 
-Detects failed DNS resolutions, which may indicate suspicious domains, misconfigurations, or potential command-and-control (C2) activity.
+Identifies failed DNS queries, which may indicate attempts to contact non-existent or malicious domains.
 
 ---
 
@@ -127,7 +127,7 @@ Detects failed DNS resolutions, which may indicate suspicious domains, misconfig
 | sort - domain_length
 ```
 
-Identifies unusually long domain names, which may indicate DNS tunnelling or encoded data exfiltration.
+Identifies unusually long domains, which may indicate DNS tunnelling or encoded data exfiltration.
 
 ---
 
@@ -142,7 +142,7 @@ Identifies unusually long domain names, which may indicate DNS tunnelling or enc
 | sort - count
 ```
 
-Detects repeated DNS queries within fixed time intervals, which may indicate automated behaviour or beaconing activity associated with malware.
+Detects repeated DNS queries from the same source, which may indicate automated communication with external infrastructure.
 
 ---
 
