@@ -17,6 +17,12 @@ In this project, raw DNS logs were ingested into Splunk, parsed using regular ex
 
 ---
 
+## 🎯 Why This Matters
+
+C2 (Command-and-Control) refers to attacker-controlled infrastructure used to communicate with compromised systems and issue commands.
+
+---
+
 ## 📂 Dataset
 
 The dataset used in this project was adapted from:
@@ -251,9 +257,9 @@ Provides visibility into:
 
 ## 📝 Incident Summary
 
-A source IP (**10.10.117.210**) generated repeated DNS queries, indicating potential beaconing activity.
+Suspicious DNS activity was identified, including repeated NXDOMAIN responses and beaconing patterns. These behaviours may indicate command-and-control (C2) communication or automated malware activity.
 
-Suspicious domains were also observed, suggesting possible interaction with unknown or malicious infrastructure.
+The activity was detected using threshold-based detection logic and further validated through behavioural analysis of repeated queries and abnormal domain patterns.
 
 ---
 
