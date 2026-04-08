@@ -1,14 +1,8 @@
 # SSH Brute Force Detection using Splunk
 
-This project demonstrates how SSH authentication logs can be analysed using Splunk SIEM to detect brute-force attacks, identify suspicious behaviour, and simulate real-world SOC (Security Operations Centre) workflows.
+This project demonstrates how SSH authentication logs can be analysed using Splunk SIEM to detect brute-force attacks and identify suspicious behaviour.
 
----
-
-## 🧠 Project Overview
-
-SSH (Secure Shell) logs capture authentication attempts and connection details. Analysing these logs enables detection of unauthorised access attempts and brute-force activity.
-
-In this project, raw SSH logs were ingested into Splunk, parsed using regex, and analysed to identify suspicious behaviour patterns.
+SSH (Secure Shell) logs capture authentication attempts and connection details. By ingesting raw logs into Splunk, extracting fields using regex, and applying detection queries, suspicious activity patterns such as high-volume failed logins and automated scanning can be identified.
 
 ---
 
