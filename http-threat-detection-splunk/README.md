@@ -8,6 +8,8 @@ HTTP logs provide visibility into web traffic, including requests, response code
 
 ## 🔍 Log Analysis Workflow
 
+This section outlines the technical steps used to process and analyse the HTTP logs.
+
 ### 1. Log Ingestion
 
 HTTP logs were uploaded into Splunk using the Add Data feature.
