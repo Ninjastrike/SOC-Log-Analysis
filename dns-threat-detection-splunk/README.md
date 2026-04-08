@@ -18,9 +18,9 @@ DNS logs were uploaded into Splunk using the Add Data feature and indexed for an
 
 ### 2. Field Extraction Approach
 
-The DNS dataset used in this project is unstructured and does not contain predefined headers. As a result, Splunk treats each log entry as raw data (`_raw`) during ingestion and does not automatically extract fields such as source IP, destination IP, or queried domain.
+The dataset used in this project is unstructured and does not contain predefined headers. As a result, Splunk treats each log entry as raw data (`_raw`) and does not automatically extract fields.
 
-To address this, fields were extracted at search time using regular expressions (`rex`).
+To enable analysis, fields were extracted at search time using regular expressions (`rex`).
 
 This reflects real-world SOC workflows, where analysts frequently work with unstructured logs and perform on-the-fly field extraction for investigation and threat detection.
 
