@@ -190,11 +190,15 @@ These indicate:
 - Attempts to access admin panels  
 - Potential reconnaissance activity  
 
+Attempts to access `/etc/passwd` indicate potential directory traversal attacks aimed at retrieving sensitive system files.
+
 ---
 
 ### 3. Scanner / Tool Detection
 
 ![Scanner Detection](screenshots/3-scanner-or-tool-detection.PNG)
+
+User-agent strings indicate the use of automated tools such as DirBuster and Nmap, commonly used for web application enumeration.
 
 Multiple requests were identified using HTTP methods such as:
 
@@ -240,6 +244,8 @@ This pattern strongly indicates:
 - Automated scanning  
 - Script-based enumeration  
 - Non-human behaviour  
+
+This behaviour is considered high risk due to its association with pre-exploitation reconnaissance.
 
 ---
 
@@ -332,6 +338,18 @@ Indicators such as:
 * HTTP error patterns  
 
 strongly indicate automated reconnaissance and web scanning activity.
+
+---
+
+## 🎯 Why This Matters
+
+HTTP traffic is a primary target for attackers, as web applications are commonly exposed to the internet. Attackers often perform reconnaissance and scanning to identify vulnerabilities before attempting exploitation.
+
+Activities such as directory traversal attempts, automated scanning using tools like DirBuster and Nmap, and repeated requests to sensitive paths are strong indicators of pre-exploitation behaviour.
+
+Detecting these patterns early helps prevent web application compromise, data exposure, and potential system takeover.
+
+This project demonstrates how SOC analysts can analyse HTTP logs to identify suspicious behaviour and support proactive threat detection.
 
 ---
 
