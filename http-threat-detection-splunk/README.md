@@ -18,11 +18,11 @@ HTTP logs were uploaded into Splunk using the Add Data feature and indexed for a
 
 ### 2. Field Extraction Approach
 
-The HTTP dataset is unstructured and does not contain predefined headers. Splunk treats each log entry as raw data (`_raw`).
+The dataset used in this project is unstructured and does not contain predefined headers. As a result, Splunk treats each log entry as raw data (`_raw`) and does not automatically extract fields.
 
 To enable analysis, fields were extracted at search time using regular expressions (`rex`).
 
-This reflects real-world SOC workflows where analysts frequently parse logs dynamically.
+This reflects real-world SOC workflows, where analysts frequently work with unstructured logs and perform on-the-fly field extraction for investigation and threat detection.
 
 #### 🔍 Regex Extraction Query
 
