@@ -281,6 +281,3 @@ The observed activity strongly indicates **automated brute-force and reconnaissa
 * Detection logic is essential for identifying abnormal behaviour  
 * Visualisation improves situational awareness  
 * Alerts enable proactive SOC monitoring
-
-[1]: https://github.com/0xrajneesh/Splunk-Projects-For-Beginners/blob/main/project%234-analyzing-ssh-logs-using-splunk-siem.md "project#4-analyzing-ssh-logs-using-splunk-siem.md"
-[2]: https://github.com/0xrajneesh/Splunk-Projects-For-Beginners "Splunk SIEM Log Analysis Projects"
