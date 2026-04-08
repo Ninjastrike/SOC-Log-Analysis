@@ -27,19 +27,6 @@ Full credit to **Rajneesh Gupta (0xrajneesh)** for providing structured learning
 
 ---
 
-## 🎯 Objectives
-
-* Extract structured fields from raw HTTP logs  
-* Detect sensitive path access  
-* Identify automated scanning tools  
-* Analyse HTTP error patterns  
-* Detect repeated scanning behaviour  
-* Identify top attackers and targets  
-* Build a monitoring dashboard  
-* Implement alerting logic  
-
----
-
 ## 🔍 Log Analysis Workflow
 
 ### 1. Log Ingestion
