@@ -111,18 +111,6 @@ Full credit to **Rajneesh Gupta (0xrajneesh)** for providing structured learning
 
 ---
 
-## 🎯 Why This Matters
-
-In real-world environments, analysts cannot manually review every log entry.
-
-This project demonstrates how detection logic, dashboards, and alerts are used to:
-
-- Prioritise critical threats  
-- Reduce investigation time  
-- Enable scalable and efficient monitoring  
-
----
-
 ## 📎 Notes
 
 This repository is built for learning and portfolio demonstration purposes.  
