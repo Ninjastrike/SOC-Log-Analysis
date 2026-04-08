@@ -1,6 +1,6 @@
 # SOC Log Analysis
 
-A collection of hands-on Security Operations Centre (SOC) log analysis projects using Splunk, demonstrating real-world detection, investigation, and alerting workflows across multiple log sources.
+A practical SOC portfolio demonstrating how raw logs are transformed into actionable security insights using Splunk SIEM. A collection of hands-on Security Operations Centre (SOC) log analysis projects using Splunk, demonstrating real-world detection, investigation, and alerting workflows across multiple log sources.
 
 ---
 
