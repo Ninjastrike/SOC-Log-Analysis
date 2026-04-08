@@ -39,9 +39,9 @@ This extracts structured fields such as:
 
 #### Regex Explanation
 
-- `\S+` matches non-whitespace values (each column)  
-- `\s+` matches spaces between fields  
-- `(?<field_name>...)` creates named fields in Splunk  
+* `\S+` matches non-whitespace values (each column)  
+* `\s+` matches spaces between fields  
+* `(?<field_name>...)` creates named fields in Splunk  
 
 This enables efficient filtering, aggregation, and detection using SPL queries.
 
@@ -116,9 +116,9 @@ Raw DNS logs were parsed into structured fields for analysis.
 
 Common domains observed:
 
-- google.com  
-- apple.com  
-- microsoft.com  
+* google.com  
+* apple.com  
+* microsoft.com  
 
 These indicate normal DNS activity.
 
@@ -132,9 +132,9 @@ Failed DNS queries were identified.
 
 Suspicious domains include:
 
-- rootshell-security.net  
-- xtral.gpsonextra.net  
-- data.t00ls.org  
+* rootshell-security.net  
+* xtral.gpsonextra.net  
+* data.t00ls.org  
 
 These may indicate malicious or unknown infrastructure.
 
@@ -146,8 +146,8 @@ These may indicate malicious or unknown infrastructure.
 
 Long or complex domains may indicate:
 
-- DNS tunnelling  
-- Encoded data exfiltration  
+* DNS tunnelling  
+* Encoded data exfiltration  
 
 ---
 
@@ -169,9 +169,9 @@ shows repeated queries at regular intervals, indicating automated behaviour.
 
 Most queries are:
 
-- A  
-- AAAA  
-- PTR  
+* A  
+* AAAA  
+* PTR  
 
 This provides baseline behaviour.
 
@@ -183,9 +183,9 @@ This provides baseline behaviour.
 
 Detection logic:
 
-- 5-minute window  
-- Count repeated queries  
-- Trigger if threshold exceeded  
+* 5-minute window  
+* Count repeated queries  
+* Trigger if threshold exceeded  
 
 ---
 
@@ -195,10 +195,10 @@ Detection logic:
 
 Configuration:
 
-- Every 5 minutes  
-- Last 5 minutes window  
-- Trigger when results > 0  
-- Severity: Medium  
+* Every 5 minutes  
+* Last 5 minutes window  
+* Trigger when results > 0  
+* Severity: Medium  
 
 ---
 
@@ -208,10 +208,10 @@ Configuration:
 
 Provides visibility into:
 
-- Top domains  
-- NXDOMAIN results  
-- Long domains  
-- Beaconing behaviour  
+* Top domains  
+* NXDOMAIN results  
+* Long domains  
+* Beaconing behaviour  
 
 ---
 
@@ -237,10 +237,9 @@ This project demonstrates how SOC analysts can use DNS logs to uncover hidden ma
 
 ## ⚠️ Challenges & Limitations
 
-- Unstructured logs required regex extraction  
-- High DNS noise  
-- NXDOMAIN is not always malicious  
-- Detection does not confirm compromise  
+* Lack of ground truth; suspicious domains inferred from behaviour  
+* NXDOMAIN and beaconing patterns may require external validation  
+* Limited dataset may not reflect full network activity
 
 ---
 
@@ -248,27 +247,27 @@ This project demonstrates how SOC analysts can use DNS logs to uncover hidden ma
 
 ### Suspicious Domains
 
-- rootshell-security.net  
-- xtral.gpsonextra.net  
-- data.t00ls.org  
+* rootshell-security.net  
+* xtral.gpsonextra.net  
+* data.t00ls.org  
 
 ### Suspicious Source IP
 
-- 10.10.117.210  
+* 10.10.117.210  
 
 ### Behavioural Indicators
 
-- Repeated DNS queries  
-- High NXDOMAIN frequency  
-- Long domain queries  
+* Repeated DNS queries  
+* High NXDOMAIN frequency  
+* Long domain queries  
 
 ---
 
 ## 🚀 Key Takeaways
 
-- DNS logs provide strong visibility into network behaviour  
-- Behaviour patterns are key indicators  
-- Detection enables proactive monitoring
+* DNS logs provide strong visibility into network behaviour  
+* Behaviour patterns are key indicators  
+* Detection enables proactive monitoring
 
 [1]: https://github.com/0xrajneesh/Splunk-Projects-For-Beginners/blob/main/Project%231-analyzing-dns-log-using%20splunk-siem.md "Project#1-analyzing-dns-log-using splunk-siem.md"
 [2]: https://github.com/0xrajneesh/Splunk-Projects-For-Beginners "Splunk SIEM Log Analysis Projects"
