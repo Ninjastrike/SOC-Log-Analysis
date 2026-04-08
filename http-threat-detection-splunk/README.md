@@ -376,18 +376,6 @@ strongly indicate automated reconnaissance and web scanning activity.
 
 ---
 
-## 🧩 Skills Demonstrated
-
-* Splunk (SPL)  
-* Regex field extraction  
-* Log analysis  
-* Threat detection  
-* SOC workflow  
-* Dashboard creation  
-* Alert configuration  
-
----
-
 ## 🚀 Key Takeaways
 
 * HTTP logs reveal attacker behaviour clearly  
