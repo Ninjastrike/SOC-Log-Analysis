@@ -1,19 +1,8 @@
 # DNS Threat Detection using Splunk
 
-This project demonstrates how DNS logs can be analysed using Splunk SIEM to detect suspicious activity such as domain anomalies, NXDOMAIN patterns, and potential DNS beaconing behaviour.
+This project demonstrates how DNS logs can be analysed using Splunk SIEM to detect suspicious activity such as domain anomalies, NXDOMAIN patterns, and potential beaconing behaviour.
 
----
-
-## 🧠 Project Overview
-
-DNS (Domain Name System) logs provide visibility into how systems resolve domain names. Analysing DNS activity allows security analysts to detect abnormal behaviour such as:
-
-- Communication with suspicious domains  
-- Failed DNS resolutions (NXDOMAIN)  
-- Unusual query patterns  
-- Potential command-and-control (C2) communication  
-
-In this project, raw DNS logs were ingested into Splunk, parsed using regular expressions, and analysed to identify potential threats and anomalous behaviour.
+DNS (Domain Name System) logs provide visibility into how systems resolve domain names. By ingesting raw logs into Splunk, extracting fields using regex, and applying detection queries, abnormal behaviour such as failed resolutions, unusual query patterns, and potential command-and-control (C2) communication can be identified.
 
 ---
 
