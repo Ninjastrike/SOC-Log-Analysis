@@ -20,7 +20,7 @@ Instead of manually reviewing logs, this project shows how analysts:
 - Visualise insights through dashboards  
 - Configure alerts for proactive monitoring  
 
-The workflow reflects how real SOC teams prioritise high-risk activity, reduce noise, and respond efficiently to potential threats.
+This reflects how real SOC teams prioritise high-risk activity, reduce noise, and respond efficiently to potential threats.
 
 ![SOC](https://img.shields.io/badge/SOC-blue)
 ![CyberSecurity](https://img.shields.io/badge/CyberSecurity-blue)
@@ -37,6 +37,7 @@ The workflow reflects how real SOC teams prioritise high-risk activity, reduce n
 
 ## 💼 Business Value
 
+These capabilities align with key SOC performance metrics and operational objectives.
 This project demonstrates how effective log analysis supports real-world Security Operations Centre (SOC) objectives and improves organisational security posture.
 
 - **Improved Threat Detection**  
@@ -64,11 +65,11 @@ This project demonstrates how effective log analysis supports real-world Securit
 
 ## 📊 Project Overview
 
-| Project | Focus Area | Key Detection |
-|--------|------------|--------------|
-| SSH Brute Force | Authentication logs | Brute-force attacks, Nmap scanning |
-| DNS Threat Detection | DNS logs | NXDOMAIN anomalies, beaconing |
-| HTTP Threat Detection | Web traffic logs | Directory traversal, scanning tools |
+| Project | Focus Area | Key Detection | Skill Focus |
+|--------|------------|--------------|-------------|
+| SSH Brute Force | Authentication logs | Brute-force attacks, Nmap scanning | Detection engineering |
+| DNS Threat Detection | DNS logs | NXDOMAIN anomalies, beaconing activity | Threat hunting |
+| HTTP Threat Detection | Web traffic logs | Directory traversal, scanning tools | Web attack analysis |
 
 Explore each project for detailed analysis and findings:
 
