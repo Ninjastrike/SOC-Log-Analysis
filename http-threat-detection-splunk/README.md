@@ -377,27 +377,27 @@ This project demonstrates how SOC analysts can analyse HTTP logs to identify sus
 
 ### Immediate Analyst Actions
 
-- Investigate source IPs generating suspicious requests and review related web activity  
-- Identify targeted endpoints and assess whether any sensitive resources were accessed  
-- Escalate persistent scanning or abnormal request behaviour for further investigation  
+* Investigate source IPs generating suspicious requests and review related web activity  
+* Identify targeted endpoints and assess whether any sensitive resources were accessed  
+* Escalate persistent scanning or abnormal request behaviour for further investigation  
 
 ### Detection & Control Improvements
 
-- Implement Web Application Firewall (WAF) rules to detect and block common attack patterns such as directory traversal and automated scanning ([owasp.org](https://owasp.org/www-project-web-security-testing-guide/))  
+* Implement Web Application Firewall (WAF) rules to detect and block common attack patterns such as directory traversal and automated scanning ([owasp.org](https://owasp.org/www-project-web-security-testing-guide/))  
 
-- Monitor and alert on abnormal HTTP request patterns, including high-frequency requests and unusual URI access ([cloudflare.com](https://www.cloudflare.com/learning/ddos/glossary/http-flood/))  
+* Monitor and alert on abnormal HTTP request patterns, including high-frequency requests and unusual URI access ([cloudflare.com](https://www.cloudflare.com/learning/ddos/http-flood-ddos-attack/))  
 
-- Validate and sanitise user input to prevent directory traversal and injection-based attacks ([owasp.org](https://owasp.org/www-community/attacks/Path_Traversal))  
+* Validate and sanitise user input to prevent directory traversal and injection-based attacks ([owasp.org](https://owasp.org/www-community/attacks/Path_Traversal))  
 
-- Restrict access to administrative endpoints and sensitive files to authorised users only ([cisa.gov](https://www.cisa.gov/news-events/news/understanding-and-mitigating-common-web-vulnerabilities))  
+* Restrict access to administrative endpoints and sensitive files to authorised users only ([cisa.gov](https://www.cisa.gov/resources-tools/resources/secure-by-design))  
 
 ### Strategic Recommendations
 
-- Adopt a layered web security approach combining WAF, input validation, and monitoring to reduce attack surface ([cisa.gov](https://www.cisa.gov/news-events/news/understanding-and-mitigating-common-web-vulnerabilities))  
+* Adopt a layered web security approach combining WAF, input validation, and monitoring to reduce attack surface
 
-- Continuously analyse HTTP traffic patterns to detect reconnaissance behaviour early in the attack lifecycle  
+* Continuously analyse HTTP traffic patterns to detect reconnaissance behaviour early in the attack lifecycle  
 
-- Integrate HTTP log monitoring with other data sources (e.g. DNS, endpoint logs) to improve detection accuracy and context  
+* Integrate HTTP log monitoring with other data sources (e.g. DNS, endpoint logs) to improve detection accuracy and context  
 
 ---
 
@@ -407,6 +407,3 @@ This project demonstrates how SOC analysts can analyse HTTP logs to identify sus
 * Detection logic is essential for SOC operations  
 * Dashboards improve visibility  
 * Alerts enable proactive monitoring 
-
-[1]: https://github.com/0xrajneesh/Splunk-Projects-For-Beginners/blob/main/project%233-analyzing-http-logs-using-splunk-siem.md "project#3-analyzing-http-logs-using-splunk-siem.md"
-[2]: https://github.com/0xrajneesh/Splunk-Projects-For-Beginners "Splunk SIEM Log Analysis Projects"
