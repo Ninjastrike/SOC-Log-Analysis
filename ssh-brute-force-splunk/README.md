@@ -18,7 +18,7 @@ SSH logs were uploaded into Splunk using the **Add Data** feature and indexed fo
 
 ### 2. Field Extraction Approach
 
-The dataset used in this project is unstructured and does not contain predefined headers. As a result, Splunk treats each log entry as raw data (`_raw`) and does not automatically extract fields.
+The dataset used in this project is unstructured and does not contain predefined headers. As a result, Splunk treats each log entry as raw data (`_raw`) and does not automatically extract fields such as authentication status or connection details.
 
 To enable analysis, fields were extracted at search time using regular expressions (`rex`).
 
