@@ -3,9 +3,7 @@
 A practical SOC portfolio demonstrating how raw logs are transformed into actionable security insights using Splunk SIEM to support threat detection, investigation, and response.
 Focused on real-world detection, investigation, and alerting workflows across SSH, DNS, and HTTP log sources.
 
----
-
-## 🧠 Overview
+##
 
 ![SOC Workflow](ssh-brute-force-splunk/screenshots/10-ssh-project-overview.png)
 
