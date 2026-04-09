@@ -389,8 +389,6 @@ This project demonstrates how SOC analysts can analyse HTTP logs to identify sus
 
 * Validate and sanitise user input to prevent directory traversal and injection-based attacks ([owasp.org](https://owasp.org/www-community/attacks/Path_Traversal))  
 
-* Apply secure-by-design principles to reduce attack surface and enforce strong access controls across applications ([cisa.gov](https://www.cisa.gov/resources-tools/resources/secure-by-design))  
-
 ### Strategic Recommendations
 
 * Adopt a layered web security approach combining WAF, input validation, and monitoring to reduce attack surface
