@@ -389,7 +389,7 @@ This project demonstrates how SOC analysts can analyse HTTP logs to identify sus
 
 * Validate and sanitise user input to prevent directory traversal and injection-based attacks ([owasp.org](https://owasp.org/www-community/attacks/Path_Traversal))  
 
-* Restrict access to administrative endpoints and sensitive files to authorised users only ([cisa.gov](https://www.cisa.gov/resources-tools/resources/secure-by-design))  
+* Apply secure-by-design principles to reduce attack surface and enforce strong access controls across applications ([cisa.gov](https://www.cisa.gov/resources-tools/resources/secure-by-design))  
 
 ### Strategic Recommendations
 
