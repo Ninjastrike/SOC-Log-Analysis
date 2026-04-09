@@ -383,7 +383,7 @@ This project demonstrates how SOC analysts can analyse HTTP logs to identify sus
 
 ### Detection & Control Improvements
 
-* Implement Web Application Firewall (WAF) rules to detect and block common attack patterns such as directory traversal and automated scanning ([owasp.org](https://owasp.org/www-project-web-security-testing-guide/))  
+* Implement Web Application Firewall (WAF) rules to detect and block common attack patterns such as directory traversal and automated scanning ([owasp.org]( https://owasp.org/www-chapter-frankfurt/assets/slides/14_OWASP_Frankfurt_Stammtisch.pdf))  
 
 * Monitor and alert on abnormal HTTP request patterns, including high-frequency requests and unusual URI access ([cloudflare.com](https://www.cloudflare.com/learning/ddos/http-flood-ddos-attack/))  
 
